@@ -103,7 +103,7 @@ init_brew() {
         # Install Apps
 
         if $no_apps; then
-            e_error "Skipping App installs"
+            e_info "Skipping App installs"
         else
             e_info "Checking for desired Apps"
 
