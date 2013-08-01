@@ -1,0 +1,161 @@
+#!/usr/bin/zsh
+
+init_brew() {
+
+    # Check for Homebrew
+    if command_exists "brew"; then
+
+        brew_taplist=$(brew tap 2> /dev/null)
+        brew_formulae=$(brew list 2> /dev/null)
+
+        # Update Homebrew
+
+        e_info "Updating Homebrew"
+        brew update
+        [ $? ] && e_done
+
+        # Upgrade Homebrew
+
+        e_info "Upgrading Homebrew"
+        brew upgrade
+        [ $? ] && e_done
+
+        # Tap repositorys
+
+        e_info "Check for missing repositorys"
+
+        local -a missing_taps
+        local -a desired_taps
+
+        desired_taps=(
+            "homebrew/dupes" # more recent versions of basic os x commands
+            "josegonzalez/php" # for php54
+            "phinze/cask" # for brew cask
+        )
+
+        for i in $desired_taps; do
+            if ! tap_exists $i; then
+                missing_taps+=("$i")
+            fi
+        done
+
+        if [[ -n $missing_taps ]]; then
+            e_info "Tapping required Homebrew repositorys"
+            for i in $missing_taps; do
+                # Tap all missing repos
+                brew tap $i
+            done
+
+        fi
+        [ $? ] && e_done
+
+        # Install formulae
+
+        e_info "Checking status of desired Homebrew formulae"
+
+        local list_formulae
+        local -a missing_formulae
+        local -a desired_formulae
+
+        desired_formulae=(
+            'coreutils' # GNU
+            'bash' # Bash 4
+            'zsh' # Zsh
+            'php54' # PHP 5.4
+            'php54-mcrypt'
+            'php54-xdebug'
+            'php54-memcached'
+            'php54-mongo'
+            'mariadb'
+            'brew-cask' # Installer for Apps
+            'ack'
+            'fasd'
+            'jpeg'
+            'macvim --override-system-vim'
+            'node'
+            'optipng'
+            'phantomjs'
+            'tree'
+            'wget --enable-iri'
+            'rsync'
+        )
+
+        for i in $desired_formulae; do
+            if ! formula_exists ${i[(w)1]}; then
+                # Store the name (and options) of every missing formula
+                missing_formulae+=("$i")
+            fi
+        done
+
+        [ $? ] && e_done
+
+        if [[ -n "$missing_formulae" ]]; then
+            # Convert the array of missing formula into a list of space-separate strings
+            list_formulae=$( printf "%s " $missing_formulae )
+
+            e_info "Installing missing Homebrew formulae"
+            # Install all missing formulae
+            brew install $( printf $list_formulae )
+
+            [ $? ] && e_done
+        fi
+
+        # Install Apps
+
+        if $no_apps; then
+            e_error "Skipping App installs"
+        else
+            e_info "Checking for desired Apps"
+
+            local -a missing_apps
+            local -a desired_apps
+
+            desired_apps=(
+                "google-chrome"
+                "google-chrome-canary"
+                "firefox"
+                "imageoptim"
+                "iterm2"
+                "sublime-text"
+                "rdio"
+                "spectacle"
+                "alfred"
+                "codekit"
+                "dropbox"
+            )
+
+            for i in $desired_apps; do
+                if ! cask_exists $i; then
+                    missing_apps+=("$i")
+                fi
+            done
+
+            if [[ -n "$missing_apps" ]]; then
+
+                e_info "Installing missing Apps"
+
+                for i in $missing_apps; do
+                    # Install missing Apps
+                    brew cask install $i
+                done
+
+            fi
+
+            [ $? ] && e_done
+        fi
+
+        # Cleanup
+        e_info "Cleaning up Brew"
+
+        unset brew_taplist brew_formulae
+        # Remove outdated versions from the Cellar
+        brew cleanup
+
+        [ $? ] && e_done
+    else
+        printf "\n"
+        e_error "Homebrew not found.\n Aborting"
+        exit
+    fi
+
+}
