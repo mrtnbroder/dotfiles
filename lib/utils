@@ -127,14 +127,14 @@ function formula_exists {
 function init_git_repo {
     # Initialize the git repository if it's missing
     e_info "Initializing git repository"
-    # git init
-    # git remote add origin $base_git
-    # git fetch origin master
+    git init
+    git remote add origin $base_git
+    git fetch origin master
     # Reset the index and working tree to the fetched HEAD
     # (submodules are cloned in the subsequent sync step)
-    # git reset --hard FETCH_HEAD
+    git reset --hard FETCH_HEAD
     # Remove any untracked files
-    # git clean -fd
+    git clean -fd
     [ $? ] && e_done "Done"
 }
 
@@ -142,10 +142,10 @@ function sync_git {
     # Sync with remote repository
     e_info "Updating dotfiles" true
     # Pull down the latest changes
-    # git pull --rebase origin master
+    git pull --rebase origin master
     # Update submodules
     e_info "Updating submodules"
-    # git submodule update --recursive --init --quiet
+    git submodule update --recursive --init --quiet
     [ $? ] && e_done "Done"
 }
 
