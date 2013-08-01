@@ -20,7 +20,7 @@ printf "$(tput sgr0)\n"
 
 # Variables
 
-base_dir="${ZDOTDIR:-$HOME}/Desktop/dotfiles"
+base_dir="${ZDOTDIR:-$HOME}/.testfiles"
 base_git="https://github.com/mrtnbroder/dotfiles_v2"
 base_tar="https://github.com/mrtnbroder/dotfiles_v2/tarball/master"
 
@@ -36,31 +36,31 @@ if [[ ! -d $base_dir ]]; then
     printf "$(tput setaf 6)➜ %s$(tput sgr0)\n" "Downloading dotfiles"
 
     # create directory
-    # mkdir $base_dir
+    mkdir $base_dir
     # # Get the tarball
-    # curl -fsSLo ${ZDOTDIR:-$HOME}/dotfiles.tar.gz $base_tar
+    curl -fsSLo ${ZDOTDIR:-$HOME}/dotfiles.tar.gz $base_tar
     # # Extract to the dotfiles directory
-    # tar -zxf ${ZDOTDIR:-$HOME}/dotfiles.tar.gz --strip-components 1 -C $base_dir
+    tar -zxf ${ZDOTDIR:-$HOME}/dotfiles.tar.gz --strip-components 1 -C $base_dir
     # # Remove the tarball
-    # rm -rf ${ZDOTDIR:-$HOME}/dotfiles.tar.gz
+    rm -rf ${ZDOTDIR:-$HOME}/dotfiles.tar.gz
 
     [ $? ] && echo "$(tput setaf 2)✔ Done.$(tput sgr0)"
 fi
 
 
-# cd $base_dir
+cd $base_dir
 
 # Imports
 
-source "../lib/colors"
-source "../lib/utils"
+source "./lib/colors"
+source "./lib/utils"
 
-# source "../lib/flags"
-source "../lib/checks"
+# source "./lib/flags"
+source "./lib/checks"
 
-source "../lib/brew"
-source "../lib/npm"
-source "../lib/gem"
+source "./lib/brew"
+source "./lib/npm"
+source "./lib/gem"
 
 e_ask "Are you sure you want to install .dotfiles?\n${Yellow}Warning: This may override some files in your home directory.${NC}"
 
@@ -79,6 +79,8 @@ if is_confirmed; then
     init_gem
 
     # vim_installer
+
+    init_prezto
 
 else
     e_error "Aborting..."

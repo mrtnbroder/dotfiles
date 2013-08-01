@@ -26,6 +26,11 @@ function e_info {
     fi
 }
 
+function link {
+    # Force create/replace the symlink.
+    ln -fs "$base_dir/$1" "${base_dir}/$2"
+}
+
 function is_confirmed {
     read -rs -k 1 ans
     case $ans in
@@ -142,4 +147,12 @@ function sync_git {
     e_info "Updating submodules"
     # git submodule update --recursive --init --quiet
     [ $? ] && e_done "Done"
+}
+
+function init_prezto {
+    # Load Prezto defaults
+    setopt EXTENDED_GLOB
+    for rcfile in $base_dir/prezto/runcoms/^README.md(.N); do
+        link "$rcfile" ".${rcfile:t}"
+    done
 }
