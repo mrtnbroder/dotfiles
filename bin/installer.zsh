@@ -20,7 +20,7 @@ printf "$(tput sgr0)\n"
 
 # Variables
 
-base_dir="${ZDOTDIR:-$HOME}/.testfiles"
+base_dir="${ZDOTDIR:-$HOME}/.dotfiles_v2"
 base_git="https://github.com/mrtnbroder/dotfiles_v2"
 base_tar="https://github.com/mrtnbroder/dotfiles_v2/tarball/master"
 
@@ -46,7 +46,6 @@ if [[ ! -d $base_dir ]]; then
 
     [ $? ] && echo "$(tput setaf 2)✔ Done.$(tput sgr0)"
 fi
-
 
 cd $base_dir
 

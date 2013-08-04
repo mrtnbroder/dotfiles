@@ -19,11 +19,7 @@ function e_done {
 }
 
 function e_info {
-    if [ ! $2 ]; then
-        echo "\n${Cyan}➜ ${1}${NC}"
-    else
-        echo "${Cyan}➜ ${1}${NC}"
-    fi
+    echo "\n${Cyan}➜ ${1}${NC}"
 }
 
 function link {
@@ -140,7 +136,7 @@ function init_git_repo {
 
 function sync_git {
     # Sync with remote repository
-    e_info "Updating dotfiles" true
+    e_info "Updating dotfiles"
     # Pull down the latest changes
     git pull --rebase origin master
     # Update submodules
