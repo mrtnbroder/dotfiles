@@ -71,15 +71,24 @@ if is_confirmed; then
 
     sync_git
 
-    init_brew
 
-    init_npm
+    # init_brew
 
-    init_gem
+    # init_npm
 
-    # vim_installer
+    # init_gem
 
-    init_prezto
+
+    link_prezto
+
+    link_git
+
+    create_gitconfig
+
+
+    link_vim
+
+    vim +BundleInstall +qall
 
 else
     e_error "Aborting..."

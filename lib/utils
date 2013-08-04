@@ -134,6 +134,7 @@ function init_git_repo {
     [ $? ] && e_done "Done"
 }
 
+
 function sync_git {
     # Sync with remote repository
     e_info "Updating dotfiles"
@@ -145,10 +146,51 @@ function sync_git {
     [ $? ] && e_done "Done"
 }
 
-function init_prezto {
+
+function link_prezto {
     # Load Prezto defaults
     setopt EXTENDED_GLOB
-    for rcfile in $base_dir/prezto/runcoms/^README.md(.N); do
+    for rcfile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
         link "$rcfile" ".${rcfile:t}"
     done
+}
+
+
+function link_git {
+    for file in $base_dir/git/^README.md(.N); do
+        link "$file" ".${file:t}"
+    done
+}
+
+
+function create_gitconfig {
+
+    if [[ ! -a "${ZDOTDIR:-$HOME}/.gitconfig.user" ]]; then
+
+        # Create user gitconfig
+        local gitconfiguser="${ZDOTDIR:-$HOME}/.gitconfig.user"
+        local gitemail=
+        local gitname=
+        touch gitconfiguser
+
+        vared -h -p "Enter your github user.name: " gitname
+        vared -h -p "Enter your github user.email: " gitemail
+
+        cat > $gitconfiguser <<EOT
+[user]
+    name = $gitname
+    email = $gitemail
+EOT
+        e_info "successfully created ~/.gitconfig.user"
+        # Cleanup
+        unset gitconfiguser gitemail gitname
+        return 0
+    fi
+
+    e_info "~/.gitconfig.user already exists"
+    return 0
+}
+
+function link_vim {
+    link "$base_dir/vim/vimrc" ".vimrc"
 }
