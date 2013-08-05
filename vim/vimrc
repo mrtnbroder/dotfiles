@@ -72,27 +72,9 @@ command W w !sudo tee % > /dev/null
 " => Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible               " be iMproved
-filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-" My Bundles here:
-"
-" original repos on github
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'othree/html5.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-markdown'
-Bundle 'pangloss/vim-javascript'
-
-filetype plugin indent on     " required!
-
+if filereadable(expand("~/.vim/vundles.vim"))
+  source ~/.vim/vundles.vim
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface

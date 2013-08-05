@@ -4,7 +4,7 @@
 # command and any setopt and trap commands to be local to the immediately
 # surrounding shell function
 
-emulate -L zsh
+emulate -LR zsh # http://stackoverflow.com/questions/3964068/zsh-automatically-run-ls-after-every-cd#comment11149454_3964198
 
 # Installation
 
@@ -54,40 +54,49 @@ cd $base_dir
 
 # Imports
 
-source "./lib/colors"
-source "./lib/utils"
+source "lib/colors"
+source "lib/utils"
 
-source "./lib/checks"
+source "lib/checks"
 
-source "./lib/brew"
-source "./lib/npm"
-source "./lib/gem"
+source "lib/git"
+
+source "lib/brew"
+source "lib/npm"
+source "lib/gem"
 
 e_ask "Are you sure you want to install .dotfiles?\n${Yellow}Warning: This may override some files in your home directory.${NC}"
 
 if is_confirmed; then
 
-    if ! $( git rev-parse --is-inside-work-tree &> /dev/null ); then
-        init_git_repo
-    fi
+    # initialise the git repository
+    init_git
 
+    # sync with git
     sync_git
 
+    # run brew
     # init_brew
 
+    # run npm
     # init_npm
 
+    # run gem
     # init_gem
 
-
+    # link prezto
     link_prezto
 
+    # link git configs
     link_git
 
+    # create gitconfig.user
     create_gitconfig
 
+    # link vundle and vimrc
     link_vim
 
+    # install vundle bundles
     vim +BundleInstall +qall
 
 else

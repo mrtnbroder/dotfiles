@@ -1,4 +1,3 @@
-#!/usr/bin/zsh
 
 function e_ask {
     printf "\n$1\n"
@@ -120,86 +119,25 @@ function formula_exists {
 }
 
 
-function init_git_repo {
-    # Initialize the git repository if it's missing
-    e_info "Initializing git repository"
-    git init
-    git remote add origin $base_git
-    git fetch origin master
-    # Reset the index and working tree to the fetched HEAD
-    # (submodules are cloned in the subsequent sync step)
-    git reset --hard FETCH_HEAD
-    # Remove any untracked files
-    git clean -fd
-    [ $? ] && e_done "Done"
-}
-
-
-function sync_git {
-    # Sync with remote repository
-    e_info "Updating dotfiles"
-    # Pull down the latest changes
-    git pull --rebase origin master
-    # Update submodules
-    e_info "Updating submodules"
-    git submodule update --recursive --init --quiet
-    [ $? ] && e_done "Done"
-}
-
-
 function link_prezto {
+
     e_info "Linking Prezto"
-    # Load Prezto defaults
+
     link "$base_dir/modules/prezto" ".zprezto"
-    for rcfile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
-        link "$rcfile" ".${rcfile:t}"
+
+    for preztofile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
+        link "$preztofile" ".${preztofile:t}"
     done
+
     [ $? ] && e_done "Done"
-}
-
-
-function link_git {
-    e_info "Linking Git"
-    for gitfile in $base_dir/git/^README.md(.N); do
-        link "$gitfile" ".${gitfile:t}"
-    done
-    [ $? ] && e_done "Done"
-}
-
-
-function create_gitconfig {
-
-    if [[ ! -a "${ZDOTDIR:-$HOME}/.gitconfig.user" ]]; then
-
-        e_info "Creating gitconfig.user"
-        # Create user gitconfig
-        local gitconfiguser="${ZDOTDIR:-$HOME}/.gitconfig.user"
-        local gitemail=
-        local gitname=
-        touch gitconfiguser
-
-        vared -h -p "Enter your github user.name: " gitname
-        vared -h -p "Enter your github user.email: " gitemail
-
-        cat > $gitconfiguser <<EOT
-[user]
-    name = $gitname
-    email = $gitemail
-EOT
-        e_info "successfully created ~/.gitconfig.user"
-        # Cleanup
-        unset gitconfiguser gitemail gitname
-
-        [ $? ] && e_done "Done"
-        return 0
-    fi
-
-    return 0
 }
 
 function link_vim {
+
     e_info "Linking Vim"
+
     link "$base_dir/vim" ".vim"
     link "$base_dir/vim/vimrc" ".vimrc"
+
     [ $? ] && e_done "Done"
 }

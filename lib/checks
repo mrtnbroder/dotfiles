@@ -1,30 +1,22 @@
-#!/usr/bin/zsh
 
-function check_for_needed_functions {
+e_info "Checking for XCode, Homebrew and Git"
 
-    e_info "Checking for XCode, Homebrew and Git"
+# XCode
+if ! command_exists gcc; then
+    e_error "The XCode Command Line Tools must be installed.${NC}\n  Download: https://developer.apple.com/downloads/\n  Then run 'zsh ~/.dotfiles/bin/installer.zsh'"
+fi
 
-    # XCode
-    if ! command_exists gcc; then
-        e_error "The XCode Command Line Tools must be installed.${NC}\n  Download: https://developer.apple.com/downloads/\n  Then run 'zsh ~/.dotfiles/bin/installer.zsh'"
-    fi
+# Homebrew
+if ! command_exists brew; then
+    e_info "Installing Homebrew..."
+    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+fi
 
-    # Homebrew
-    if ! command_exists brew; then
-        e_info "Installing Homebrew..."
-        ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-    fi
+# Git
+if ! command_exists git; then
+    e_info "Installing Git..."
+    brew update
+    brew install git
+fi
 
-    # Git
-    if ! command_exists git; then
-        e_info "Installing Git..."
-        brew update
-        brew install git
-    fi
-
-    return 0
-}
-
-check_for_needed_functions
-
-[ $? ] && e_done
+[ $? ] && e_done "Done"
