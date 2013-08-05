@@ -3,18 +3,18 @@
 e_info "Checking for XCode, Homebrew and Git"
 
 # XCode
-if (( ! $+commands[gcc] )); then
+if command_exists gcc; then
     e_error "The XCode Command Line Tools must be installed.${NC}\n  Download: https://developer.apple.com/downloads/\n  Then run 'zsh ~/.dotfiles/bin/installer.zsh'"
 fi
 
 # Homebrew
-if (( ! $+commands[brew] )); then
+if ! command_exists brew; then
     e_info "Installing Homebrew..."
     ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
 fi
 
 # Git
-if (( ! $+commands[git] )); then
+if ! command_exists git; then
     e_info "Installing Git..."
     brew update
     brew install git

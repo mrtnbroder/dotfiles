@@ -59,6 +59,8 @@ source "./lib/utils"
 # source "./lib/flags"
 source "./lib/checks"
 
+exit 1
+
 source "./lib/brew"
 source "./lib/npm"
 source "./lib/gem"
