@@ -150,6 +150,7 @@ function sync_git {
 function link_prezto {
     e_info "Linking Prezto"
     # Load Prezto defaults
+    link "$base_dir/modules/prezto" ".zprezto"
     for rcfile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
         link "$rcfile" ".${rcfile:t}"
     done
