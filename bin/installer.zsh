@@ -85,7 +85,6 @@ if is_confirmed; then
 
     create_gitconfig
 
-
     link_vim
 
     vim +BundleInstall +qall
