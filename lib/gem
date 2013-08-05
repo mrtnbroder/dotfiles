@@ -9,7 +9,7 @@ init_gem() {
         # Update installed gems
 
         e_info "Updating RubyGems"
-        gem update
+        gem update --no-document
         [ $? ] && e_done "Done"
 
         # ======================================================================
@@ -41,7 +41,7 @@ init_gem() {
 
             e_info "Installing missing gems..."
             # Install all missing gems
-            gem install -N $( printf $gem_list_to_install )
+            gem install --no-ri --no-rdoc $( printf $gem_list_to_install )
 
             [ $? ] && e_done "Done"
         fi

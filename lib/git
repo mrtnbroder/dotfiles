@@ -36,7 +36,7 @@ function sync_git {
 
 function link_git {
 
-    e_info "Linking Git"
+    e_info "Linking .gitfiles"
 
     for gitfile in $base_dir/git/^README.md(.N); do
         link "$gitfile" ".${gitfile:t}"

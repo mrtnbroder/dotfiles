@@ -76,13 +76,15 @@ if is_confirmed; then
     sync_git
 
     # run brew
-    # init_brew
+    init_brew
 
     # run npm
-    # init_npm
+    init_npm
 
     # run gem
-    # init_gem
+    link_gem
+    source "${ZDOTDIR:-$HOME}/.gemrc"
+    init_gem
 
     # link prezto
     link_prezto
@@ -96,8 +98,13 @@ if is_confirmed; then
     # link vundle and vimrc
     link_vim
 
+    # copy fonts into the library
+    copy_fonts
+
     # install vundle bundles
     vim +BundleInstall +qall
+
+    # e_info "Don't forget to install a iTerm2 color scheme, located in ~/.dotfiles/apps/iTerm2"
 
 else
     e_error "Aborting..."
