@@ -56,7 +56,7 @@ function confirmed {
 # Test whether a command exists
 # $1 - cmd to test
 function command_exists {
-    if (( $+commands[$1] )); then
+    if (( $+commands[$1] )) &> /dev/null; then
       return 0
     fi
     return 1
@@ -148,17 +148,21 @@ function sync_git {
 
 
 function link_prezto {
+    e_info "Linking Prezto"
     # Load Prezto defaults
     for rcfile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
         link "$rcfile" ".${rcfile:t}"
     done
+    [ $? ] && e_done "Done"
 }
 
 
 function link_git {
+    e_info "Linking Git"
     for gitfile in $base_dir/git/^README.md(.N); do
         link "$gitfile" ".${gitfile:t}"
     done
+    [ $? ] && e_done "Done"
 }
 
 
@@ -166,6 +170,7 @@ function create_gitconfig {
 
     if [[ ! -a "${ZDOTDIR:-$HOME}/.gitconfig.user" ]]; then
 
+        e_info "Creating gitconfig.user"
         # Create user gitconfig
         local gitconfiguser="${ZDOTDIR:-$HOME}/.gitconfig.user"
         local gitemail=
@@ -183,14 +188,17 @@ EOT
         e_info "successfully created ~/.gitconfig.user"
         # Cleanup
         unset gitconfiguser gitemail gitname
+
+        [ $? ] && e_done "Done"
         return 0
     fi
 
-    e_info "~/.gitconfig.user already exists"
     return 0
 }
 
 function link_vim {
+    e_info "Linking Vim"
     link "$base_dir/vim" ".vim"
     link "$base_dir/vim/vimrc" ".vimrc"
+    [ $? ] && e_done "Done"
 }

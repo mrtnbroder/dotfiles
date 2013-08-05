@@ -23,6 +23,7 @@ printf "$(tput sgr0)\n"
 # Variables
 
 base_dir="${ZDOTDIR:-$HOME}/.dotfiles_v2"
+# base_dir="${ZDOTDIR:-$HOME}/Dropbox/dotfiles"
 base_git="https://github.com/mrtnbroder/dotfiles_v2"
 base_tar="https://github.com/mrtnbroder/dotfiles_v2/tarball/master"
 
@@ -56,10 +57,7 @@ cd $base_dir
 source "./lib/colors"
 source "./lib/utils"
 
-# source "./lib/flags"
 source "./lib/checks"
-
-exit 1
 
 source "./lib/brew"
 source "./lib/npm"
@@ -74,7 +72,6 @@ if is_confirmed; then
     fi
 
     sync_git
-
 
     # init_brew
 
