@@ -24,7 +24,7 @@ function e_info {
 
 function link {
     # Force create/replace the symlink.
-    ln -fs "$base_dir/$1" "${ZDOTDIR:-$HOME}/$2"
+    ln -fs "$1" "${ZDOTDIR:-$HOME}/$2"
 }
 
 function is_confirmed {
