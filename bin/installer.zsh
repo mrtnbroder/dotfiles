@@ -8,6 +8,8 @@ emulate -L zsh
 
 # Installation
 
+setopt EXTENDED_GLOB
+
 printf "$(tput setaf 6)"
 printf "%s\n" '                _      _'
 printf "%s\n" '    |          | | o  | |'
