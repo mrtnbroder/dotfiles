@@ -83,7 +83,7 @@ if is_confirmed; then
 
     # run gem
     link_gem
-    source "${ZDOTDIR:-$HOME}/.gemrc"
+
     init_gem
 
     # link prezto

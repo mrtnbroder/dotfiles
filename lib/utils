@@ -125,7 +125,7 @@ function link_prezto {
 
     link "$base_dir/modules/prezto" ".zprezto"
 
-    for preztofile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
+    for preztofile in $base_dir/lib/prezto-overrides/^README.md(.N); do
         link "$preztofile" ".${preztofile:t}"
     done
 
@@ -159,7 +159,7 @@ function copy_fonts {
     e_info "Copying Fonts into the Library"
 
     for font in $base_dir/apps/iTerm2/Fonts/^README.md(.N); do
-        copy -f "$font" "${ZDOTDIR:-$HOME}/Library/Fonts/${font:t}"
+        cp -f "$font" "${ZDOTDIR:-$HOME}/Library/Fonts/${font:t}"
     done
 
     [ $? ] && e_done "Done"
