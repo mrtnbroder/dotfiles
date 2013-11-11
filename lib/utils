@@ -129,7 +129,7 @@ function link_prezto {
 
     link "$base_dir/modules/prezto" ".zprezto"
 
-    for preztofile in $base_dir/lib/prezto-overrides/^README.md(.N); do
+    for preztofile in $base_dir/modules/prezto/runcoms/^README.md(.N); do
         link "$preztofile" ".${preztofile:t}"
     done
 

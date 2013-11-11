@@ -1,2 +1,3 @@
-install: --no-document
-update: --no-document
+:update_sources: true
+:benchmark: false
+gem: --no-document
