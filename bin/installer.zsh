@@ -65,15 +65,15 @@ source "lib/brew"
 source "lib/npm"
 source "lib/gem"
 
+# initialise the git repository
+init_git
+
+# sync with git
+sync_git
+
 e_ask "Are you sure you want to install .dotfiles?\n${Yellow}Warning: This may override some files in your home directory.${NC}"
 
 if is_confirmed; then
-
-    # initialise the git repository
-    init_git
-
-    # sync with git
-    sync_git
 
     # run brew
     init_brew
@@ -96,13 +96,13 @@ if is_confirmed; then
     create_gitconfig
 
     # link vundle and vimrc
-    link_vim
+    # link_vim
 
     # copy fonts into the library
     copy_fonts
 
     # install vundle bundles
-    vim +BundleInstall +qall
+    # vim +BundleInstall +qall
 
     # e_info "Don't forget to install a iTerm2 color scheme, located in ~/.dotfiles/apps/iTerm2"
 

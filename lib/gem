@@ -23,9 +23,12 @@ init_gem() {
         local -a desired_gems
 
         desired_gems=(
-            "sass"
-            "compass"
-            "susy"
+            'sass'
+            'bourbon' # http://bourbon.io/
+            'bitters' # http://bitters.bourbon.io/
+            'neat' # http://neat.bourbon.io/
+            'compass'
+            'susy'
         )
 
         for gem in $desired_gems; do

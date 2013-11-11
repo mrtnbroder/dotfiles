@@ -69,6 +69,7 @@ init_brew() {
             'brew-cask' # Installer for Apps
             'ack'
             'fasd'
+            'unrar'
             'jpeg'
             'macvim --override-system-vim'
             'node'
@@ -110,17 +111,17 @@ init_brew() {
             local -a desired_apps
 
             desired_apps=(
-                "google-chrome"
-                "google-chrome-canary"
-                "firefox"
-                "imageoptim"
-                "iterm2"
-                "sublime-text"
-                "rdio"
-                "spectacle"
-                "alfred"
-                "codekit"
-                "dropbox"
+                'google-chrome'
+                'google-chrome-canary'
+                'firefox'
+                'imageoptim'
+                'iterm2'
+                'sublime-text'
+                'rdio'
+                'spectacle'
+                'alfred'
+                'codekit'
+                'dropbox'
             )
 
             for i in $desired_apps; do

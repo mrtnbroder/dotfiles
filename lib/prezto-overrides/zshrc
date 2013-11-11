@@ -6,4 +6,4 @@
 source ${ZDOTDIR:-$HOME}/.dotfiles_v2/modules/prezto/runcoms/zshrc
 
 alias update="brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; gem update; gem cleanup"
-alias subl="/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Sublime\ Text\ 3.app/Contents/SharedSupport/bin/subl"

@@ -19,4 +19,4 @@ if ! command_exists git; then
     brew install git
 fi
 
-[ $? ] && e_done "Done"
+e_done "Done"

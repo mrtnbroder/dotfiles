@@ -27,13 +27,14 @@ init_npm() {
 
         # List of npm packages
         desired_packages=(
-            "bower"
-            "titanium"
-            "alloy"
-            "grunt-cli"
-            "jshint"
-            "coffee-script"
-            "yo"
+            'bower'
+            'titanium'
+            'alloy'
+            'grunt-cli'
+            'jshint'
+            'coffee-script'
+            'js2coffee'
+            'yo'
         )
 
         for i in $desired_packages; do

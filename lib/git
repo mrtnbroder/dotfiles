@@ -30,19 +30,19 @@ function sync_git {
     e_info "Updating submodules"
     git submodule update --recursive --init --quiet
 
-    [ $? ] && e_done "Done"
+    e_done "Done"
 }
 
 
 function link_git {
 
-    e_info "Linking .gitfiles"
+    # e_info "Linking .gitfiles"
 
     for gitfile in $base_dir/git/^README.md(.N); do
         link "$gitfile" ".${gitfile:t}"
     done
 
-    [ $? ] && e_done "Done"
+    # [ $? ] && e_done "Done"
 
 }
 
