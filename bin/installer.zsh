@@ -75,6 +75,11 @@ e_ask "Are you sure you want to install .dotfiles?\n${Yellow}Warning: This may o
 
 if is_confirmed; then
 
+    # link git configs for some default behaviour
+    link_git
+    # create gitconfig.user
+    create_gitconfig
+
     # run brew
     init_brew
 
@@ -88,12 +93,6 @@ if is_confirmed; then
 
     # link prezto
     link_prezto
-
-    # link git configs
-    link_git
-
-    # create gitconfig.user
-    create_gitconfig
 
     # link vundle and vimrc
     # link_vim
