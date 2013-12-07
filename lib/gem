@@ -28,6 +28,7 @@ init_gem() {
             'bitters' # http://bitters.bourbon.io/
             'neat' # http://neat.bourbon.io/
             'compass'
+            'middleman'
             'animation --pre'
             'susy'
         )
