@@ -60,11 +60,11 @@ init_brew() {
             'coreutils' # GNU
             'bash' # Bash 4
             'zsh' # Zsh
-            'php54' # PHP 5.4
-            'php54-mcrypt'
-            'php54-xdebug'
-            'php54-memcached'
-            'php54-mongo'
+            'php55' # PHP 5.5
+            'php55-mcrypt'
+            'php55-xdebug'
+            'php55-memcached'
+            'php55-mongo'
             'mariadb'
             'brew-cask' # Installer for Apps
             'ack'

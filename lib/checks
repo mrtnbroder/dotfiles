@@ -9,7 +9,7 @@ fi
 # Homebrew
 if ! command_exists brew; then
     e_info "Installing Homebrew..."
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
 # Git
