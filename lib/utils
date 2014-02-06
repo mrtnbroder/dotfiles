@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 function e_ask {
     printf "\n$1\n"

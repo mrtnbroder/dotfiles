@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 function init_git {
 
@@ -30,7 +31,7 @@ function sync_git {
     e_info "Updating submodules"
     git submodule update --recursive --init --quiet
 
-    e_done "Done"
+    [ $? ] && e_done "Done"
 }
 
 

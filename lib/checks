@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 
 e_info "Checking for XCode, RVM, Homebrew and Git"
 
