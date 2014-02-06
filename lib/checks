@@ -12,7 +12,6 @@ if ! command_exists brew; then
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
-
 # Git
 if ! command_exists git; then
     e_info "Installing Git..."
