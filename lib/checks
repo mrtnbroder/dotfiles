@@ -12,17 +12,18 @@ if ! command_exists brew; then
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 fi
 
-# RVM
-if ! command_exists rvm; then
-    e_info "Installing RVM..."
-    curl -sSL https://get.rvm.io | bash -s stable --rails
-fi
 
 # Git
 if ! command_exists git; then
     e_info "Installing Git..."
     brew update
     brew install git
+fi
+
+# RVM
+if ! command_exists rvm; then
+    e_info "Installing RVM..."
+    curl -sSL https://get.rvm.io | bash -s stable --rails
 fi
 
 e_done "Done"
