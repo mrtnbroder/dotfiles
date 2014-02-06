@@ -28,13 +28,19 @@ init_npm() {
         # List of npm packages
         desired_packages=(
             'bower'
-            'titanium'
-            'alloy'
             'grunt-cli'
-            'jshint'
+            'gulp'
+            'ios-sim'
+            'ios-deploy'
+            'ionic'
+            'cordova'
+            'phonegap'
             'coffee-script'
             'js2coffee'
             'yo'
+            'jshint'
+            'csslint'
+            'coffeelint'
         )
 
         for i in $desired_packages; do
@@ -45,10 +51,10 @@ init_npm() {
 
 
         if [[ -n $missing_packages ]]; then
-            packages=$( printf "%s " $missing_packages )
+            # packages=$( printf "%s " $missing_packages )
 
             # Install packages globally
-            npm install --global --quiet $( printf $packages )
+            npm install --global --quiet "$( printf "%s " "$missing_packages" )"
         fi
 
         [ $? ] && e_done "Done"

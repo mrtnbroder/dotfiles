@@ -73,11 +73,17 @@ init_brew() {
             'jpeg'
             'macvim --override-system-vim'
             'node'
-            'optipng'
             'phantomjs'
             'tree'
+            'https://github.com/Homebrew/homebrew/pull/23839'
             'wget --enable-iri'
             'rsync'
+            'optipng'
+            'imagemagick'
+            'pngquant'
+            'pngcrush'
+            'gource'
+            'figlet'
         )
 
         for i in $desired_formulae; do
@@ -91,11 +97,11 @@ init_brew() {
 
         if [[ -n "$missing_formulae" ]]; then
             # Convert the array of missing formula into a list of space-separate strings
-            list_formulae=$( printf "%s " $missing_formulae )
+            # list_formulae=$( printf "%s " $missing_formulae )
 
             e_info "Installing missing Homebrew formulae"
             # Install all missing formulae
-            brew install $( printf $list_formulae )
+            brew install "$( printf "%s " "$missing_formulae" )"
 
             [ $? ] && e_done
         fi

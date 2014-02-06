@@ -1,5 +1,5 @@
 
-e_info "Checking for XCode, Homebrew and Git"
+e_info "Checking for XCode, RVM, Homebrew and Git"
 
 # XCode
 if ! command_exists gcc; then
@@ -10,6 +10,12 @@ fi
 if ! command_exists brew; then
     e_info "Installing Homebrew..."
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+fi
+
+# RVM
+if ! command_exists rvm; then
+    e_info "Installing RVM..."
+    curl -sSL https://get.rvm.io | bash -s stable --rails
 fi
 
 # Git

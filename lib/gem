@@ -2,7 +2,7 @@
 init_gem() {
 
     # Check for RubyGems
-    if command_exists 'gem'; then
+    if command_exists gem; then
 
         gem_list=$(gem list 2> /dev/null)
 
@@ -28,6 +28,7 @@ init_gem() {
             'bitters' # http://bitters.bourbon.io/
             'neat' # http://neat.bourbon.io/
             'compass'
+            'scss-lint'
             'middleman'
             'animation --pre'
             'susy'
@@ -42,11 +43,11 @@ init_gem() {
 
         if [[ -n "$missing_gems" ]]; then
             # Convert the array of missing formula into a list of space-separate strings
-            gem_list_to_install=$( printf "%s " $missing_gems )
+            # gem_list_to_install=$( printf "%s " $missing_gems )
 
             e_info "Installing missing gems..."
             # Install all missing gems
-            gem install --no-ri --no-rdoc $( printf $gem_list_to_install )
+            gem install --no-ri --no-rdoc "$( printf "%s " "$missing_gems" )"
 
             [ $? ] && e_done "Done"
         fi
