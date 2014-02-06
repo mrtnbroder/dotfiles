@@ -18,7 +18,7 @@ printf "%s\n" ' /  |  /  \_|  |/  |  |/  |/  / \_'
 printf "%s\n" 'o\_/|_/\__/ |_/|__/|_/|__/|__/ \/'
 printf "%s\n" '               |\'
 printf "%s\n" '               |/ by Martin Broder'
-printf "%s" "$(tput sgr0)\n"
+printf "%s\n" "$(tput sgr0)"
 
 # Variables
 

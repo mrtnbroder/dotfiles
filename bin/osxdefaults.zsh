@@ -1,10 +1,20 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
-# Set custom OS X defaults
-# See: github.com/mathiasbynens/dotfiles
+# Ask for the administrator password upfront
+sudo -v
 
-# General UI/UX
-# ----------------------------------------------------------------------
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+###############################################################################
+# General UI/UX                                                               #
+###############################################################################
+
+# Set computer name (as done via System Preferences → Sharing)
+# sudo scutil --set ComputerName "Martin's MacMini"
+# sudo scutil --set HostName "Martin's MacMini"
+# sudo scutil --set LocalHostName "Martin's MacMini"
+# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Martin's MacMini"
 
 # Disable Menu bar transparency
 # defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
@@ -33,6 +43,9 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 # Disable useless Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
 
+# Restart automatically if the computer freezes
+systemsetup -setrestartfreeze on
+
 # Disable Resume system-wide
 defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
@@ -41,10 +54,6 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
-
-# Show battery life percentage
-defaults write com.apple.menuextra.battery ShowPercent -string "YES"
-defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
 # Set sidebar icon size to medium
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -64,18 +73,21 @@ defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
+# Set Help Viewer windows to non-floating mode
+defaults write com.apple.helpviewer DevMode -bool true
+
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Never go into computer sleep mode
-# systemsetup -setcomputersleep Off > /dev/null
+systemsetup -setcomputersleep Off > /dev/null
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Disable Notification Center and remove the menu bar icon
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist
 
 
 # Input Devices
@@ -96,16 +108,32 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+# Automatically illuminate built-in MacBook keyboard in low light
+defaults write com.apple.BezelServices kDim -bool true
+# Turn off keyboard illumination when computer is not used for 5 minutes
+defaults write com.apple.BezelServices kDimTime -int 300
+
+# Set language and text formats
+# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
+defaults write NSGlobalDomain AppleLanguages -array "en" "nl"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=EUR"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+
+systemsetup -settimezone "Europe/Berlin" > /dev/null
+
 # Enable access for assistive devices
 # echo -n 'a' | sudo tee /private/var/db/.AccessibilityAPIEnabled > /dev/null 2>&1
 # sudo chmod 444 /private/var/db/.AccessibilityAPIEnabled
 # TODO: avoid GUI password prompt somehow (http://apple.stackexchange.com/q/60476/4408)
 # sudo osascript -e 'tell application "System Events" to set UI elements enabled to true'
 
-# Automatically illuminate built-in MacBook keyboard in low light
-# defaults write com.apple.BezelServices kDim -bool true
-# Turn off keyboard illumination when computer is not used for 5 minutes
-# defaults write com.apple.BezelServices kDimTime -int 300
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# Follow the keyboard focus while zoomed in
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 
 # Mission Control
@@ -124,6 +152,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # 11: Launchpad
 # 12: Notification Center
 
+# Top left screen corner → Display sleep
+defaults write com.apple.dock wvous-tl-corner -int 10
+defaults write com.apple.dock wvous-tl-modifier -int 0
 # Bottom right corner → Mission Control
 defaults write com.apple.dock wvous-br-corner -int 2
 defaults write com.apple.dock wvous-br-modifier -int 0
@@ -141,7 +172,10 @@ defaults write com.apple.dock wvous-bl-modifier -int 0
 # Dock: enable the 2D Dock
 # defaults write com.apple.dock no-glass -bool true
 
-# Dock: position the Dock on the left
+# Enable highlight hover effect for the grid view of a stack (Dock)
+defaults write com.apple.dock mouse-over-hilite-stack -bool true
+
+# Dock: position the Dock on the bottom
 defaults write com.apple.dock orientation bottom
 
 # Dock: set the icon size of Dock items to 40 pixels
@@ -162,6 +196,10 @@ defaults write com.apple.dock mineffect scale
 # Dock: speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
+# Remove the auto-hiding Dock delay
+defaults write com.apple.dock autohide-delay -float 0
+# Remove the animation when hiding/showing the Dock
+defaults write com.apple.dock autohide-time-modifier -float 0
 
 # Finder
 # ----------------------------------------------------------------------
@@ -236,6 +274,9 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Screen: save screenshots to the desktop
 defaults write com.apple.screencapture location -string "$HOME/Desktop"
 
+# Screen: Save screenshots in JPG format (other options: BMP, GIF, PNG, PDF, TIFF)
+defaults write com.apple.screencapture type -string "jpg"
+
 # Screen: disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
@@ -261,6 +302,36 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 # defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
+
+# Prevent Time Machine from prompting to use new hard drives as backup volume
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Disable local Time Machine backups
+hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+###############################################################################
+# SSD-specific tweaks                                                         #
+###############################################################################
+
+# Disable local Time Machine snapshots
+sudo tmutil disablelocal
+
+# Disable hibernation (speeds up entering sleep mode)
+sudo pmset -a hibernatemode 0
+
+# Remove the sleep image file to save disk space
+sudo rm /Private/var/vm/sleepimage
+# Create a zero-byte file instead…
+sudo touch /Private/var/vm/sleepimage
+# …and make sure it can’t be rewritten
+sudo chflags uchg /Private/var/vm/sleepimage
+
+# Disable the sudden motion sensor as it’s not useful for SSDs
+sudo pmset -a sms 0
+
 # iTunes
 # ----------------------------------------------------------------------
 
@@ -283,9 +354,22 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Misc: disable Dictionary results
 defaults write com.apple.spotlight DictionaryLookupEnabled -bool false
 
+# Use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
+# Open and save files as UTF-8 in TextEdit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+# Enable the debug menu in Disk Utility
+defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+defaults write com.apple.DiskUtility advanced-image-options -bool true
+
 # Misc: disable auto-correct
 # defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-for app in "Dashboard" "Dock" "Finder" "SystemUIServer" "Terminal" "iTunes"; do
-    killall "$app" > /dev/null 2>&1
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+    "Dock" "Finder" "Mail" "Messages" "Safari" "SizeUp" "SystemUIServer" \
+    "Terminal" "Transmission" "Twitter" "iCal"; do
+    killall "${app}" > /dev/null 2>&1
 done
+echo "Done. Note that some of these changes require a logout/restart to take effect."
