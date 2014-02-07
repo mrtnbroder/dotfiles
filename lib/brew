@@ -76,7 +76,6 @@ init_brew() {
             'node'
             'phantomjs'
             'tree'
-            'https://github.com/Homebrew/homebrew/pull/23839'
             'wget --enable-iri'
             'rsync'
             'optipng'
