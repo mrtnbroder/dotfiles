@@ -48,7 +48,7 @@ init_gem() {
 
             e_info "Installing missing gems..."
             # Install all missing gems
-            gem install --no-ri --no-rdoc "$( printf "%s " "$missing_gems" )"
+            gem install --no-ri --no-rdoc "$( printf "'%s '" "$missing_gems" )"
 
             [ $? ] && e_done "Done"
         fi

@@ -102,7 +102,7 @@ init_brew() {
 
             e_info "Installing missing Homebrew formulae"
             # Install all missing formulae
-            brew install "$( printf "%s " "$missing_formulae" )"
+            brew install "$( printf "'%s '" "$missing_formulae" )"
 
             [ $? ] && e_done
         fi

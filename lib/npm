@@ -55,7 +55,7 @@ init_npm() {
             # packages=$( printf "%s " $missing_packages )
 
             # Install packages globally
-            npm install --global --quiet "$( printf "%s " "$missing_packages" )"
+            npm install --global --quiet "$( printf "'%s '" "$missing_packages" )"
         fi
 
         [ $? ] && e_done "Done"
