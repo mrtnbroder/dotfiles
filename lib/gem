@@ -44,11 +44,11 @@ init_gem() {
 
         if [[ -n "$missing_gems" ]]; then
             # Convert the array of missing formula into a list of space-separate strings
-            # gem_list_to_install=$( printf "%s " $missing_gems )
+            gem_list_to_install="$( printf "%s " "$missing_gems" )"
 
             e_info "Installing missing gems..."
             # Install all missing gems
-            gem install --no-ri --no-rdoc "$( printf "%s " "$missing_gems" )"
+            gem install --no-ri --no-rdoc "$( printf "%s " "$gem_list_to_install" )"
 
             [ $? ] && e_done "Done"
         fi

@@ -11,13 +11,13 @@ init_brew() {
         # Update Homebrew
 
         e_info "Updating Homebrew"
-        brew update
+        # brew update
         [ $? ] && e_done
 
         # Upgrade Homebrew
 
         e_info "Upgrading Homebrew"
-        brew upgrade
+        # brew upgrade
         [ $? ] && e_done
 
         # Tap repositorys
@@ -98,11 +98,11 @@ init_brew() {
 
         if [[ -n "$missing_formulae" ]]; then
             # Convert the array of missing formula into a list of space-separate strings
-            # list_formulae=$( printf "%s " $missing_formulae )
+            list_formulae="$( printf "%s " "$missing_formulae" )"
 
             e_info "Installing missing Homebrew formulae"
             # Install all missing formulae
-            brew install "$( printf "%s " "$missing_formulae" )"
+            brew install "$( printf "%s " "$list_formulae" )"
 
             [ $? ] && e_done
         fi
