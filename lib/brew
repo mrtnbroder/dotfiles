@@ -97,11 +97,11 @@ init_brew() {
 
         if [[ -n "$missing_formulae" ]]; then
             # Convert the array of missing formula into a list of space-separate strings
-            list_formulae="$( printf "%s " "$missing_formulae" )"
+            list_formulae=$( printf "%s " $missing_formulae )
 
             e_info "Installing missing Homebrew formulae"
             # Install all missing formulae
-            brew install "$( echo "$list_formulae" )"
+            brew install $( printf $list_formulae )
 
             [ $? ] && e_done
         fi
