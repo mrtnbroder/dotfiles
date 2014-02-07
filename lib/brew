@@ -11,13 +11,13 @@ init_brew() {
         # Update Homebrew
 
         e_info "Updating Homebrew"
-        # brew update
+        brew update
         [ $? ] && e_done
 
         # Upgrade Homebrew
 
         e_info "Upgrading Homebrew"
-        # brew upgrade
+        brew upgrade
         [ $? ] && e_done
 
         # Tap repositorys
