@@ -24,6 +24,7 @@ fi
 if ! command_exists rvm; then
     e_info "Installing RVM..."
     curl -sSL https://get.rvm.io | bash -s stable --rails
+    source "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm"
 fi
 
 e_done "Done"
