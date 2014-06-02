@@ -30,7 +30,7 @@ init_brew() {
         desired_taps=(
             "homebrew/dupes" # more recent versions of basic os x commands
             "josegonzalez/php" # for php54
-            "phinze/cask" # for brew cask
+            "caskroom/cask" # for brew cask
         )
 
         for i in $desired_taps; do
