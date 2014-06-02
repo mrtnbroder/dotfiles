@@ -33,6 +33,9 @@ init_gem() {
             'middleman'
             'animation --pre'
             'susy'
+            'guard'
+            'guard-livereload'
+            'rails'
         )
 
         for gem in $desired_gems; do
