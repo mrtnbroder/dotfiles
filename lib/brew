@@ -73,7 +73,8 @@ init_brew() {
             'unrar'
             'jpeg'
             'macvim --override-system-vim'
-            'node'
+            # 'node'
+            'nvm' # install node version manager instead of node
             'phantomjs'
             'tree'
             'wget --enable-iri'

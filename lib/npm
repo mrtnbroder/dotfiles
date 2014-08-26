@@ -33,14 +33,15 @@ init_npm() {
             'gulp'
             'ios-sim'
             'ios-deploy'
-            'ionic'
-            'cordova'
-            'phonegap'
+            # 'ionic'
+            # 'cordova'
+            # 'phonegap'
             'coffee-script'
             'js2coffee'
             'yo'
             'jshint'
             'csslint'
+            'coffeegulp'
             'coffeelint'
         )
 
