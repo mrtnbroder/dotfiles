@@ -36,6 +36,7 @@ init_gem() {
             'guard'
             'guard-livereload'
             'rails'
+            'capistrano'
         )
 
         for gem in $desired_gems; do
