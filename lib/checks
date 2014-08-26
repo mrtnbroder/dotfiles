@@ -27,4 +27,14 @@ if ! command_exists rvm; then
     source "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm"
 fi
 
+# NVM
+if ! command_exists nvm; then
+    e_info "Installing Node Version Manager..."
+    brew install nvm
+    export NVM_DIR="${ZDOTDIR:-$HOME}/.nvm"
+    source "$(brew --prefix nvm)/nvm.sh"
+    nvm install 0.10
+    nvm alias default 0.10
+fi
+
 e_done "Done"
