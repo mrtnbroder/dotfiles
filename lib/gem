@@ -10,7 +10,7 @@ init_gem() {
         # Update installed gems
 
         e_info "Updating RubyGems"
-        gem update --no-ri --no-rdoc
+        gem update --no-ri --no-rdoc --system
         [ $? ] && e_done "Done"
 
         # ======================================================================

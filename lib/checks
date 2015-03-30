@@ -23,7 +23,7 @@ fi
 # RVM
 if ! command_exists rvm; then
     e_info "Installing RVM..."
-    curl -sSL https://get.rvm.io | bash -s stable --rails
+    curl -sSL https://get.rvm.io | bash -s stable --rails --auto-dotfiles
     source "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm"
 fi
 
