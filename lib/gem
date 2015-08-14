@@ -24,19 +24,19 @@ init_gem() {
         local -a desired_gems
 
         desired_gems=(
-            'sass'
-            'bourbon' # http://bourbon.io/
-            'bitters' # http://bitters.bourbon.io/
-            'neat' # http://neat.bourbon.io/
-            'compass'
-            'scss-lint'
-            'middleman'
-            'animation --pre'
-            'susy'
+            # 'sass'
+            # 'bourbon' # http://bourbon.io/
+            # 'bitters' # http://bitters.bourbon.io/
+            # 'neat' # http://neat.bourbon.io/
+            # 'compass'
+            # 'scss-lint'
+            # 'middleman'
+            # 'animation --pre'
+            # 'susy'
             'guard'
             'guard-livereload'
-            'rails'
-            'capistrano'
+            # 'rails'
+            # 'capistrano'
         )
 
         for gem in $desired_gems; do

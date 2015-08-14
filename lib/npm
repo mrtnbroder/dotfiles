@@ -29,20 +29,22 @@ init_npm() {
         # List of npm packages
         desired_packages=(
             'bower'
-            'grunt-cli'
+            # 'grunt-cli'
             'gulp'
-            'ios-sim'
-            'ios-deploy'
+            # 'ios-sim'
+            # 'ios-deploy'
             # 'ionic'
             # 'cordova'
             # 'phonegap'
-            'coffee-script'
-            'js2coffee'
+            # 'coffee-script'
+            # 'js2coffee'
             'yo'
             'jshint'
-            'csslint'
-            'coffeegulp'
-            'coffeelint'
+            # 'csslint'
+            'eslint'
+            'npm-check-updates'
+            # 'coffeegulp'
+            # 'coffeelint'
         )
 
         for i in $desired_packages; do
