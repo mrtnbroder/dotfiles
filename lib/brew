@@ -61,11 +61,11 @@ init_brew() {
             'coreutils' # GNU
             'bash' # Bash 4
             'zsh' # Zsh
-            'php55' # PHP 5.5
-            'php55-mcrypt'
-            'php55-xdebug'
-            'php55-memcached'
-            'php55-mongo'
+            'php56' # PHP 5.6
+            # 'php55-mcrypt'
+            # 'php55-xdebug'
+            # 'php55-memcached'
+            # 'php55-mongo'
             'mariadb'
             'brew-cask' # Installer for Apps
             'ack'
@@ -73,8 +73,6 @@ init_brew() {
             'unrar'
             'jpeg'
             'macvim --override-system-vim'
-            # 'node'
-            'nvm' # install node version manager instead of node
             'phantomjs'
             'tree'
             'wget --enable-iri'
