@@ -61,19 +61,19 @@ init_brew() {
             'coreutils' # GNU
             'bash' # Bash 4
             'zsh' # Zsh
-            'php56' # PHP 5.6
+            # 'php56' # PHP 5.6
             # 'php55-mcrypt'
             # 'php55-xdebug'
             # 'php55-memcached'
             # 'php55-mongo'
-            'mariadb'
+            # 'mariadb'
             'brew-cask' # Installer for Apps
             'ack'
             'fasd'
             'unrar'
             'jpeg'
             'macvim --override-system-vim'
-            'phantomjs'
+            # 'phantomjs'
             'tree'
             'wget --enable-iri'
             'rsync'

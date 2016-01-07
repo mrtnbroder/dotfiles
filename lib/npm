@@ -39,7 +39,7 @@ init_npm() {
             # 'coffee-script'
             # 'js2coffee'
             'yo'
-            'jshint'
+            # 'jshint'
             # 'csslint'
             'eslint'
             'npm-check-updates'
