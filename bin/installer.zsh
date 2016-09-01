@@ -95,13 +95,13 @@ if is_confirmed; then
     link_prezto
 
     # link vundle and vimrc
-    # link_vim
+    link_vim
 
     # copy fonts into the library
     copy_fonts
 
     # install vundle bundles
-    # vim +PluginInstall +qall
+    vim +PluginInstall +qall
 
     # e_info "Don't forget to install a iTerm2 color scheme, located in ~/.dotfiles/apps/iTerm2"
 
