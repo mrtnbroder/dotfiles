@@ -9,112 +9,46 @@
 " vim --noplugin -u vim/vundles.vim -N "+set hidden" "+syntax on" +BundleClean! +BundleInstall +qall
 " Filetype off is required by vundle
 
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+Plugin 'ascenator/L9', {'name': 'newL9'}
 
-" Html, Xml, Css, Markdown...
-" Bundle "claco/jasmine.vim"
-" Bundle "digitaltoad/vim-jade.git"
-" Bundle "groenewege/vim-less.git"
-Bundle "itspriddle/vim-jquery.git"
-" Bundle "jtratner/vim-flavored-markdown.git"
-Bundle "kchmck/vim-coffee-script"
-" Bundle "kogakure/vim-sparkup.git"
-" Bundle "nelstrom/vim-markdown-preview"
-" Bundle "skwp/vim-html-escape"
-" Bundle "slim-template/vim-slim.git"
-" Bundle "timcharper/textile.vim.git"
-" Bundle "tpope/vim-haml"
-" Bundle "wavded/vim-stylus"
-
-
-" Git related...
-" Bundle "gregsexton/gitv"
-" Bundle "mattn/gist-vim"
-" Bundle "skwp/vim-git-grep-rails-partial"
-" Bundle "tjennings/git-grep-vim"
-" Bundle "tpope/vim-fugitive"
-Bundle "tpope/vim-git"
-
-
-" General text editing improvements...
-" Bundle "AndrewRadev/splitjoin.vim"
-" Bundle "Raimondi/delimitMate"
-" Bundle "Shougo/neocomplcache.git"
-" Bundle "briandoll/change-inside-surroundings.vim.git"
-" Bundle "garbas/vim-snipmate.git"
-" Bundle "godlygeek/tabular"
-" Bundle "honza/vim-snippets"
-" Bundle "nelstrom/vim-visual-star-search"
-" Bundle "skwp/vim-easymotion"
-" Bundle "tomtom/tcomment_vim.git"
-" Bundle "tpope/vim-bundler"
-" Bundle "vim-scripts/IndexedSearch"
-" Bundle "vim-scripts/camelcasemotion.git"
-" Bundle "vim-scripts/matchit.zip.git"
-" Bundle "terryma/vim-multiple-cursors"
-
-
-" General vim improvements
-" Bundle "MarcWeber/vim-addon-mw-utils.git"
-" Bundle "bogado/file-line.git"
-" Bundle "jistr/vim-nerdtree-tabs.git"
-" Bundle "kien/ctrlp.vim"
-" Bundle "majutsushi/tagbar.git"
-" Bundle "mattn/webapi-vim.git"
-" Bundle "rking/ag.vim"
-" Bundle "scrooloose/nerdtree.git"
-Bundle "scrooloose/syntastic.git"
-" Bundle "sjl/gundo.vim"
-" Bundle "skwp/YankRing.vim"
-" Bundle "skwp/greplace.vim"
-" Bundle "skwp/vim-conque"
-" Bundle "tomtom/tlib_vim.git"
-" Bundle "tpope/vim-abolish"
-" Bundle "tpope/vim-endwise.git"
-" Bundle "tpope/vim-ragtag"
-" Bundle "tpope/vim-repeat.git"
-" Bundle "tpope/vim-surround.git"
-" Bundle "tpope/vim-unimpaired"
-" Bundle "vim-scripts/AnsiEsc.vim.git"
-" Bundle "vim-scripts/AutoTag.git"
-" Bundle "vim-scripts/lastpos.vim"
-" Bundle "vim-scripts/sudo.vim"
-" Bundle "xsunsmile/showmarks.git"
-" Bundle "terryma/vim-multiple-cursors"
-" vim-misc is required for vim-session
-" Bundle "xolox/vim-misc"
-" Bundle "xolox/vim-session"
-
-
-" Text objects
-" Bundle "austintaylor/vim-indentobject"
-" Bundle "bootleq/vim-textobj-rubysymbol"
-" Bundle "coderifous/textobj-word-column.vim"
-" Bundle "kana/vim-textobj-datetime"
-" Bundle "kana/vim-textobj-entire"
-" Bundle "kana/vim-textobj-function"
-" Bundle "kana/vim-textobj-user"
-" Bundle "lucapette/vim-textobj-underscore"
-" Bundle "nathanaelkane/vim-indent-guides"
-" Bundle "nelstrom/vim-textobj-rubyblock"
-" Bundle "thinca/vim-textobj-function-javascript"
-" Bundle "vim-scripts/argtextobj.vim"
-
-
-" Cosmetics, color scheme, Powerline...
-Bundle "chrisbra/color_highlight.git"
-Bundle "skwp/vim-colors-solarized"
-" Bundle "bling/vim-airline.git"
-Bundle "vim-scripts/TagHighlight.git"
-" Bundle "bogado/file-line.git"
-
-filetype plugin indent on     " required!
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
