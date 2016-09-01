@@ -1,3 +1,6 @@
 [submodule "modules/prezto"]
 	path = modules/prezto
 	url = git@github.com:mrtnbroder/prezto.git
+[submodule "vim/bundle/vundle"]
+	path = vim/bundle/vundle
+	url = git@github.com:VundleVim/Vundle.vim.git
