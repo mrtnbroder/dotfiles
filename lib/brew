@@ -67,12 +67,12 @@ init_brew() {
             # 'php55-memcached'
             # 'php55-mongo'
             # 'mariadb'
-            'brew-cask' # Installer for Apps
+            # 'brew-cask' # Installer for Apps
             'ack'
             'fasd'
             'unrar'
             'jpeg'
-            'macvim --override-system-vim'
+            # 'macvim --override-system-vim'
             # 'phantomjs'
             'tree'
             'wget --enable-iri'

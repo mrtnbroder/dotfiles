@@ -101,35 +101,10 @@ if is_confirmed; then
     copy_fonts
 
     # install vundle bundles
-    # vim +BundleInstall +qall
+    # vim +PluginInstall +qall
 
     # e_info "Don't forget to install a iTerm2 color scheme, located in ~/.dotfiles/apps/iTerm2"
 
 else
     e_error "Aborting..."
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

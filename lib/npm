@@ -38,7 +38,7 @@ init_npm() {
             # 'phonegap'
             # 'coffee-script'
             # 'js2coffee'
-            'yo'
+            # 'yo'
             # 'jshint'
             # 'csslint'
             'eslint'
