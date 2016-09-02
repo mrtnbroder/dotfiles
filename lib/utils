@@ -160,7 +160,7 @@ function link_vim {
         rm -rf "${ZDOTDIR:-$HOME}/.vim"
     fi
 
-    ln -s "$base_dir/vim/vim" "${ZDOTDIR:-$HOME}/.vim"
+    ln -s "$base_dir/vim/nvim" "${ZDOTDIR:-$HOME}/.config/nvim"
     link "$base_dir/vim/vimrc" ".vimrc"
 
     [ $? ] && e_done "Done"
