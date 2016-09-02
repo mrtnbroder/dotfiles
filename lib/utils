@@ -146,7 +146,7 @@ function link_gem {
         rm -rf "${ZDOTDIR:-$HOME}/.gemrc"
     fi
 
-    link "$base_dir/gem/gemrc" ".gemrc"
+    link "$base_dir/rc/.gemrc" ".gemrc"
 
     [ $? ] && e_done "Done"
 
@@ -160,8 +160,8 @@ function link_vim {
         rm -rf "${ZDOTDIR:-$HOME}/.vim"
     fi
 
-    link "$base_dir/vim" ".vim"
-    link "$base_dir/vim/vimrc" ".vimrc"
+    link "$base_dir/.vim" ".vim"
+    link "$base_dir/rc/.vimrc" ".vimrc"
 
     [ $? ] && e_done "Done"
 

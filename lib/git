@@ -39,9 +39,23 @@ function link_git {
 
     # e_info "Linking .gitfiles"
 
-    for gitfile in "$base_dir"/git/^README.md(.N); do
-        cp -f "$gitfile" ".${gitfile:t}"
-    done
+    if [ -e "${ZDOTDIR:-$HOME}/.gitattributes" ]; then
+        rm "${ZDOTDIR:-$HOME}/.gitattributes"
+    fi
+    if [ -e "${ZDOTDIR:-$HOME}/.gitconfig" ]; then
+        rm "${ZDOTDIR:-$HOME}/.gitconfig"
+    fi
+    if [ -e "${ZDOTDIR:-$HOME}/.gitignore" ]; then
+        rm "${ZDOTDIR:-$HOME}/.gitignore"
+    fi
+    if [ -e "${ZDOTDIR:-$HOME}/.gitmessage" ]; then
+        rm "${ZDOTDIR:-$HOME}/.gitmessage"
+    fi
+
+    link "$base_dir/rc/.gitattributes" ".gitattributes"
+    link "$base_dir/rc/.gitconfig" ".gitconfig"
+    link "$base_dir/rc/.gitignore" ".gitignore"
+    link "$base_dir/rc/.gitmessage" ".gitmessage"
 
     # [ $? ] && e_done "Done"
 
