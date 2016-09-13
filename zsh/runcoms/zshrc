@@ -1,2 +1,5 @@
 
 source "$HOME/.zplugrc"
+
+# fasd
+[ -s $(which fasd) ] && eval "$(fasd --init auto)"

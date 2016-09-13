@@ -42,10 +42,11 @@ if ! command_exists nvm; then
 fi
 
 # - ZPLUG
-if !command_exists zplug; then
+if ! command_exists zplug; then
   e_info "Installing zplug..."
   curl -sL zplug.sh/installer | zsh
   source "$HOME/.zplug/init.zsh"
+  zplug update --self
 fi
 
 e_done "Done"

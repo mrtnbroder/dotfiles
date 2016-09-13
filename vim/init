@@ -7,7 +7,7 @@ init_vim() {
     mkdir -p "$HOME/.config"
   fi
 
-  ln -s "$DOTFILES_PATH/vim/nvim" "$HOME/.config/nvim"
+  ln -fs "$DOTFILES_PATH/vim/nvim" "$HOME/.config/nvim"
 
   [ $? ] && e_done "Done"
 }
