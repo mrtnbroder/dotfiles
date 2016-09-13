@@ -1,4 +1,7 @@
 
+export ZPLUG_PATH="$HOME/.zplug"
+export DOTFILES_PATH="$HOME/.dotfiles"
+
 source "$HOME/.zplugrc"
 
 # fasd

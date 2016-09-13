@@ -7,8 +7,8 @@ source ~/.zplug/init.zsh
 #
 
 zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 
 zplug "plugins/git", from:oh-my-zsh, if:"which git"
@@ -42,3 +42,8 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load # --verbose
+
+source "$DOTFILES_PATH/zsh/modules/editor/init.zsh"
+source "$DOTFILES_PATH/zsh/modules/directory/init.zsh"
+source "$DOTFILES_PATH/zsh/modules/completions/init.zsh"
+source "$DOTFILES_PATH/zsh/modules/autosuggestions/init.zsh"
