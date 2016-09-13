@@ -1,0 +1,51 @@
+#!/usr/bin/env zsh
+
+e_info "Checking for XCode, RVM, NVM, Homebrew and Git..."
+
+# - XCODE
+if ! command_exists gcc; then
+  e_error "The XCode Command Line Tools must be installed.${NC}\n  Download: https://developer.apple.com/downloads/\n  Then run 'zsh ~/.dotfiles/bin/init.zsh'"
+fi
+
+# - HOMEBREW
+if ! command_exists brew; then
+  e_info "Installing Homebrew..."
+
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# - GIT
+if ! command_exists git; then
+  e_info "Installing Git..."
+
+  brew update
+  brew install git
+fi
+
+# - RVM
+if ! command_exists rvm; then
+  e_info "Installing RVM..."
+
+  curl -sSL https://get.rvm.io | bash -s stable --ruby --rails --auto-dotfiles
+  source "$HOME/.rvm/scripts/rvm"
+fi
+
+# - NVM
+if ! command_exists nvm; then
+  e_info "Installing Node Version Manager..."
+
+  brew install nvm
+  source "$(brew --prefix nvm)/nvm.sh"
+
+  nvm install stable
+  nvm alias default stable
+fi
+
+# - ZPLUG
+if !command_exists zplug; then
+  e_info "Installing zplug..."
+  curl -sL zplug.sh/installer | zsh
+  source "$HOME/.zplug/init.zsh"
+fi
+
+e_done "Done"

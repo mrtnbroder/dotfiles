@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+
+init_vim() {
+  e_info "Linking (Neo)Vim..."
+
+  if [ ! -d "$HOME/.config" ]; then
+    mkdir -p "$HOME/.config"
+  fi
+
+  ln -s "$DOTFILES_PATH/vim/nvim" "$HOME/.config/nvim"
+
+  [ $? ] && e_done "Done"
+}

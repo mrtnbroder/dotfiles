@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+init_zsh() {
+  e_info "Linking Zsh runcoms..."
+
+  for zshruncom in $DOTFILES_PATH/zsh/runcoms/^README.md(.N); do
+    ln -fs "$zshruncom" "$HOME/.${zshruncom:t}"
+  done
+  # fi
+
+  [ $? ] && e_done "Done"
+}

@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+#
+# - OPTIONS
+#
+
+# install/update brew casks?
+export no_apps=true
+# sync with remote git repo?
+export no_sync=true
+# install/update npm libraries?
+export no_npm=false
+# install/update brew libraries?
+export no_brew=false
+# install/update gem libraries?
+export no_gem=true
+# overwrite osx defaults
+export no_osx=true

@@ -1,0 +1,98 @@
+#!/usr/bin/env zsh
+
+link_gem() {
+  e_info "Linking .gemrc"
+
+  ln -sf "$DOTFILES_PATH/gem/gemrc" "$HOME/.gemrc"
+
+  [ $? ] && e_done "Done"
+}
+
+# Check for gems
+gem_exists() {
+  if echo $gem_list | grep "$1" > /dev/null; then
+    printf "%s already installed.\n" "$1"
+    return 0
+  fi
+
+  e_warn "Missing gem: $1"
+  return 1
+}
+
+init_gem() {
+  # Check for RubyGems
+  if command_exists gem; then
+
+    # Link the .gemrc first
+    link_gem
+
+    gem_list=$(gem list 2> /dev/null)
+
+    # Update gems
+
+    e_info "Updating RubyGems"
+    gem update --no-ri --no-rdoc --system
+    [ $? ] && e_done "Done"
+
+    # Install gems
+
+    e_info "Check for missing gems"
+
+    local gem_list_to_install
+    local -a missing_gems
+    local -a desired_gems
+
+    desired_gems=(
+      # 'sass'
+      # 'bourbon' # http://bourbon.io/
+      # 'bitters' # http://bitters.bourbon.io/
+      # 'neat' # http://neat.bourbon.io/
+      # 'compass'
+      # 'scss-lint'
+      # 'middleman'
+      # 'animation --pre'
+      # 'susy'
+      # 'guard'
+      # 'guard-livereload'
+      # 'rails'
+      # 'capistrano'
+    )
+
+    for gem in $desired_gems; do
+      if ! gem_exists ${gem[(w)1]}; then
+        missing_gems+=("$gem")
+      fi
+    done
+
+    [ $? ] && e_done "Done"
+
+    if [[ -n "$missing_gems" ]]; then
+      # Convert the array of missing formula into a list of space-separate strings
+      gem_list_to_install=$( printf "%s " $missing_gems )
+
+      e_info "Installing missing gems..."
+      # Install all missing gems
+      gem install --no-ri --no-rdoc $( printf $gem_list_to_install )
+
+      [ $? ] && e_done "Done"
+    fi
+
+    # ======================================================================
+    # Cleanup
+    # ======================================================================
+
+    e_info "Cleaning up RubyGems"
+
+    unset gem_list
+    # Remove outdated versions
+    gem cleanup
+
+    [ $? ] && e_done "Done"
+  else
+    printf "\n"
+    e_error "Error: RubyGems not found."
+    printf "Aborting...\n"
+    exit
+  fi
+
+}
