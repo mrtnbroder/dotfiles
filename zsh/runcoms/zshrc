@@ -1,8 +1,14 @@
 
-export ZPLUG_PATH="$HOME/.zplug"
-export DOTFILES_PATH="$HOME/.dotfiles"
+source "$HOME/.dotfiles/lib/paths"
 
+# zplug
 source "$HOME/.zplugrc"
 
+# nodenv
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
+# rbenv
+eval "$(rbenv init -)"
+
 # fasd
-[ -s $(which fasd) ] && eval "$(fasd --init auto)"
+[ -s $(which fasd) ] && eval "$(fasd --init posix-alias zsh-hook)"

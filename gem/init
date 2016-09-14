@@ -3,7 +3,7 @@
 link_gem() {
   e_info "Linking .gemrc"
 
-  ln -sf "$DOTFILES_PATH/gem/gemrc" "$HOME/.gemrc"
+  ln -sf "$DOTFILES_PATH/gem/runcoms/gemrc" "$HOME/.gemrc"
 
   [ $? ] && e_done "Done"
 }

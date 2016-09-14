@@ -1,0 +1,4 @@
+
+npm config set save-exact=true
+
+progress=false

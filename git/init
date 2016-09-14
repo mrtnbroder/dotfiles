@@ -36,10 +36,10 @@ init_git() {
 }
 
 link_git() {
-  ln -fs "$DOTFILES_PATH/git/gitattributes" "$HOME/.gitattributes"
-  ln -fs "$DOTFILES_PATH/git/gitconfig" "$HOME/.gitconfig"
-  ln -fs "$DOTFILES_PATH/git/gitignore" "$HOME/.gitignore"
-  ln -fs "$DOTFILES_PATH/git/gitmessage" "$HOME/.gitmessage"
+  ln -fs "$DOTFILES_PATH/git/runcoms/gitattributes" "$HOME/.gitattributes"
+  ln -fs "$DOTFILES_PATH/git/runcoms/gitconfig" "$HOME/.gitconfig"
+  ln -fs "$DOTFILES_PATH/git/runcoms/gitignore" "$HOME/.gitignore"
+  ln -fs "$DOTFILES_PATH/git/runcoms/gitmessage" "$HOME/.gitmessage"
 }
 
 create_gitconfig() {

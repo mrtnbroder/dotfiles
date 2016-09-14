@@ -12,20 +12,13 @@ printf "%s\n" '               |\'
 printf "%s\n" '               |/ by Martin Broder'
 printf "%s\n" "$(tput sgr0)"
 
-#
-# - PATHS
-#
-
-export DOTFILES_PATH="$HOME/.dotfiles"
-export DOTFILES_GIT_URL="https://github.com/mrtnbroder/dotfiles"
-export DOTFILES_TAR_URL="$DOTFILES_GIT_URL/tarball/master"
-
 # The order here is important
-source "$DOTFILES_PATH/install/options"
-source "$DOTFILES_PATH/install/download"
-source "$DOTFILES_PATH/install/colors"
-source "$DOTFILES_PATH/install/utils"
-source "$DOTFILES_PATH/install/checks"
+source "$HOME/.dotfiles/lib/paths"
+source "$DOTFILES_PATH/lib/options"
+source "$DOTFILES_PATH/lib/download"
+source "$DOTFILES_PATH/lib/colors"
+source "$DOTFILES_PATH/lib/utils"
+source "$DOTFILES_PATH/lib/checks"
 source "$DOTFILES_PATH/git/init"
 
 # Initalise the Git Repository
@@ -35,7 +28,7 @@ e_ask "Are you sure you want to install .dotfiles?\n${Yellow}Warning: This may o
 
 if is_confirmed; then
 
-  # link git configs for some default behaviour
+  # Git
   link_git
 
   # create gitconfig.user
@@ -62,7 +55,7 @@ if is_confirmed; then
   init_vim
 
   # copy fonts into the library
-  copy_fonts
+  # copy_fonts
 
   # e_info "Don't forget to install a iTerm2 color scheme, located in ~/.dotfiles/apps/iTerm2"
 

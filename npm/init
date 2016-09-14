@@ -12,8 +12,12 @@ npm_exists() {
 }
 
 init_npm() {
+  eval "$(nodenv init -)"
+
   # Check for npm
   if command_exists npm; then
+
+    ln -fs "$DOTFILES_PATH/npm/runcoms/npmrc" "$HOME/.npmrc"
 
     npm_list=$(npm list -g 2> /dev/null)
 
