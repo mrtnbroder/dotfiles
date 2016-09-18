@@ -12,105 +12,98 @@ set nocompatible
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Remove automatic plugin identation (required by Vundle)
+" Remove automatic plugin identation (required by Plug)
 filetype off
 
 "###############################################################################
-"# Vundle
+"# Plug
 "###############################################################################
 
-" install Vundle if not already installed
-" if "test ! -d ~/.config/nvim/bundle/Vundle.vim" \
-"  "run 'git clone https://github.com/VundleVim/Vundle.vim.git ~/.config/nvim/bundle/Vundle.vim'"
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-
-" Startup Vundle
-call vundle#begin()
+" Set the runtime path to include Plug and initialize
+call plug#begin('~/.vim/plugged')
 
 "###############################################################################
-"# Plugins
+"# Plugs
 "###############################################################################
 
-" Let Vundle manage Vundle
-Plugin 'VundleVim/Vundle.vim'
+" Let Plug manage Plug
+Plug 'PlugVim/Plug.vim'
 
 " Emmet
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " Editor config
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
 " Solarized color scheme
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Easy way to wrap/unwrap words
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Fuzzy search
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Better and faster grep ### DEPRECATED
-" Plugin 'rking/ag.vim'
+" Plug 'rking/ag.vim'
 
 " Indent guides
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
 " Syntax highlight
-" Plugin 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 " Syntax highlight for ES2015
-Plugin 'othree/yajs.vim'
+Plug 'othree/yajs.vim'
 
 " Syntaxt highlighting for CSSNext
-" Plugin 'hail2u/vim-css3-syntax'
+" Plug 'hail2u/vim-css3-syntax'
 
 " Code snippets
-Plugin 'sirver/ultisnips'
+Plug 'sirver/ultisnips'
 
 " Real time color preview for CSS
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " Code comments helper
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Git wrapper
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Unix commands wrapper
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 
 " Buffer navigation improved
-Plugin 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 
 " Easy string coercion
-Plugin 'tpope/vim-abolish'
+Plug 'tpope/vim-abolish'
 
 " Programming metrics
-" Plugin 'wakatime/vim-wakatime'
+" Plug 'wakatime/vim-wakatime'
 
 " Automatically create folders when writing buffers to disk
-Plugin 'pbrisbin/vim-mkdir'
+Plug 'pbrisbin/vim-mkdir'
 
 " Smarter increment/decrement numbers for Vim
-Plugin 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 
 " Show Git diff indicators on the sidebar
-" Plugin 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 
 " Useful status bar
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 
 " So we can repeat plugin commands
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
+
+" Close Plug
+call plug#end()
 
 "###############################################################################
 "# General settings
 "###############################################################################
-
-" Close Vundle
-call vundle#end()
 
 " Automatic plugin indent
 filetype plugin indent on
