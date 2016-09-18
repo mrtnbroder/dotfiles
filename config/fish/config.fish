@@ -1,5 +1,5 @@
 
-source ~/.dotfiles/lib/exports
+source ~/.dotfiles/bin/lib/exports
 
 set -g EDITOR nvim
 set -g VISUAL nvim
@@ -15,7 +15,7 @@ function start_tmux
 end
 
 # always start within a tmux session
-start_tmux
+# start_tmux
 
 # run fisher once
 # fisher ^/dev/null

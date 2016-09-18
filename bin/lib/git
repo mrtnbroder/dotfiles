@@ -45,7 +45,7 @@ function link_git {
 function create_gitconfig {
   local gitconfiguser=~/.gitconfig.user
 
-  if [ ! -a $gitconfiguser ]; then
+  if [ ! -f $gitconfiguser ]; then
     e_info "Creating gitconfig.user"
     # Create user gitconfig
     local gitemail=

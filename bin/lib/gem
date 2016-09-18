@@ -4,7 +4,6 @@ function link_gem {
   ln -fs $DOTFILES_PATH/gemrc ~/.gemrc
 }
 
-
 function update_gem {
   link_gem
 
@@ -15,7 +14,7 @@ function update_gem {
 
   # Install Gems stuff
   e_info "Installing Gems..."
-  cat ../../Gemfile | grep -v '^#' | xargs gem install # &> /dev/null
+  cat $DOTFILES_PATH/Gemfile | grep -v '^#' | xargs gem install # &> /dev/null
   [ $? ] && e_done
 
   # Cleanup

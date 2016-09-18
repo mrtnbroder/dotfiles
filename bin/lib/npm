@@ -13,7 +13,7 @@ function update_npm {
   [ $? ] && e_done
 
   # Install NPM packages stuff
-  e_info "Installing NPM packages stuff..."
-  cat ../../Npmfile | grep -v '^#' | xargs npm i -g # &> /dev/null
+  e_info "Installing NPM packages..."
+  cat $DOTFILES_PATH/Npmfile | grep -v '^#' | xargs npm i -g # &> /dev/null
   [ $? ] && e_done
 }

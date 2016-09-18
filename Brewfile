@@ -22,5 +22,6 @@ the_silver_searcher
 tmux
 unrar
 wget --with-iri
+wrk
 tree
 zsh

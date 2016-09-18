@@ -9,6 +9,6 @@ function update_casks {
 
   # Install Homebrew stuff
   e_info "Installing Casks stuff..."
-  cat ../../Caskfile | grep -v '^#' | xargs brew cask install # &> /dev/null
+  cat $DOTFILES_PATH/Caskfile | grep -v '^#' | xargs brew cask install # &> /dev/null
   [ $? ] && e_done
 }

@@ -19,6 +19,14 @@ filetype off
 "# Plug
 "###############################################################################
 
+" Install Plug+Plugins if required
+" if empty(glob('~/.config/nvim/autoload/plug.vim'))
+"   silent !mkdir -p ~/.config/nvim/autoload
+"   silent !curl -fLo ~/.config/nvim/autoload/plug.vim
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall
+" endif
+
 " Set the runtime path to include Plug and initialize
 call plug#begin('~/.config/nvim/plugged')
 
@@ -206,11 +214,16 @@ autocmd BufRead,BufNewFile *.md,gitcommit setlocal spell complete+=kspell
 "# Theming
 "###############################################################################
 
+" Set background
+set background=dark
+
 " Define color scheme
-" colorscheme solarized
+colorscheme solarized
 
 " Enable italic text
 highlight Comment cterm=italic
+
+highlight ColorColumn ctermbg=7
 
 " Display current line number in bold text
 highlight CursorLineNr cterm=bold
@@ -332,6 +345,13 @@ function! LightLineFilename()
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != LightLineModified() ? '' . LightLineModified() : ' ')
 endfunction
+
+"###############################################################################
+"# HardMode
+"###############################################################################
+
+" Boot into HardMode
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 
 "###############################################################################
 "# HyperTerm

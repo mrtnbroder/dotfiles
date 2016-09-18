@@ -14,6 +14,8 @@ printf "%s\n" "$(tput sgr0)"
 
 BASE_DIR=${0:a:h}
 
+echo "BASE_DIR: $BASE_DIR"
+
 # The order is important
 source "$BASE_DIR/lib/exports"
 source "$BASE_DIR/lib/options"
@@ -21,12 +23,12 @@ source "$BASE_DIR/lib/download"
 source "$BASE_DIR/lib/colors"
 source "$BASE_DIR/lib/utils"
 source "$BASE_DIR/lib/checks"
-source "$BASE_DIR/git/init"
+source "$BASE_DIR/lib/git"
 
 check_required_commands
 
 # Initalise the Git Repository
-init_git
+# init_git
 
 e_ask "Are you sure you want to install .dotfiles?\n${Yellow}Warning: This may override some files in your home directory.${NC}"
 
@@ -60,7 +62,7 @@ if is_confirmed; then
 
   # NeoVim
   source "$BASE_DIR/lib/nvim"
-  update_vim
+  update_nvim
 
   # copy fonts into the library
   # copy_fonts
