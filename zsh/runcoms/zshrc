@@ -1,5 +1,5 @@
 
-source "$HOME/.dotfiles/lib/paths"
+source "$HOME/.dotfiles/lib/exports"
 
 # zplug
 source "$HOME/.zplugrc"

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+function update_casks {
+  # Install Cask if not available
+  if [ -z `which brew cask` ]; then
+    echo "Installing Cask..."
+    brew tap caskroom/cask # &> /dev/null
+  fi
+
+  # Install Homebrew stuff
+  e_info "Installing Casks stuff..."
+  cat ../../Caskfile | grep -v '^#' | xargs brew cask install # &> /dev/null
+  [ $? ] && e_done
+}

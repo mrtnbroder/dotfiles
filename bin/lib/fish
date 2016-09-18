@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+function update_fish {
+  # e_info "Linking fish functions..."
+
+  if [ ! -d ~/.config/fish/functions ]; then
+    mkdir -p ~/.config/fish/functions
+  fi
+
+  # fish config
+  ln -fs $DOTFILES_PATH/fish/config.fish ~/.config/fish/config.fish
+
+  # fisher
+  ln -fs $DOTFILES_PATH/fish/fishfile ~/.config/fish/fishfile
+  ln -fs $DOTFILES_PATH/fish/functions/fisher.fish ~/.config/fish/functions/fisher.fish
+
+  # [ $? ] && e_done "Done"
+}

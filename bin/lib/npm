@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+function link_npm {
+  ln -fs $DOTFILES_PATH/npmrc ~/.npmrc
+}
+
+function update_npm {
+  link_npm
+
+  # Update NPM packages
+  e_info "Updating NPM packages..."
+  npm up -g
+  [ $? ] && e_done
+
+  # Install NPM packages stuff
+  e_info "Installing NPM packages stuff..."
+  cat ../../Npmfile | grep -v '^#' | xargs npm i -g # &> /dev/null
+  [ $? ] && e_done
+}

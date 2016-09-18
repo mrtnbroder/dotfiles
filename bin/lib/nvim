@@ -1,0 +1,19 @@
+#!/usr/bin/env zsh
+
+function update_nvim {
+  # e_info "Linking NeoVim..."
+
+  if [ ! -d ~/.config/nvim ]; then
+    mkdir -p ~/.config/nvim
+  fi
+
+  # Vundle
+  ln -fs $DOTFILES_PATH/config/nvim/bundle ~/.config/nvim/bundle
+  # .vimrc
+  ln -fs $DOTFILES_PATH/config/nvim/init.vim ~/.config/nvim/init.vim
+
+  ln -s $DOTFILES_PATH/config/nvim ~/.vim
+  ln -s $DOTFILES_PATH/config/nvim/init.vim ~/.vimrc
+
+  # [ $? ] && e_done "Done"
+}

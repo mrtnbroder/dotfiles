@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+function update_brew {
+  # Update Homebrew
+  e_info "Updating Homebrew..."
+  brew update
+  [ $? ] && e_done
+
+  # Upgrade Homebrew
+  e_info "Upgrading Homebrew..."
+  brew upgrade --all
+  [ $? ] && e_done
+
+  # Install Homebrew stuff
+  e_info "Installing Homebrew stuff..."
+  cat ../../Brewfile | grep -v '^#' | xargs brew install # &> /dev/null
+  [ $? ] && e_done
+
+  # Cleanup
+  e_info "Cleaning up Homebrew..."
+  brew cleanup
+  [ $? ] && e_done
+}

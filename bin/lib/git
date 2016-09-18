@@ -1,0 +1,70 @@
+#!/usr/bin/env zsh
+
+function sync_git {
+  if ! $no_sync; then
+    # Sync with remote repository
+    e_info "Updating dotfiles"
+    # Pull down the latest changes
+    git pull --rebase origin master
+    # Update submodules
+    e_info "Updating submodules"
+    git submodule update --recursive --init --quiet
+
+    [ $? ] && e_done "Done"
+  fi
+}
+
+function init_git {
+  if ! $( git rev-parse --is-inside-work-tree &> /dev/null ); then
+    # Initialize the git repository if it's missing
+    e_info "Initializing Git Repository"
+
+    git init
+    git remote add origin $DOTFILES_GIT_URL
+    git fetch origin master
+    # Reset the index and working tree to the fetched HEAD
+    # (submodules are cloned in the subsequent sync step)
+    git reset --hard FETCH_HEAD
+    # Remove any untracked files
+    git clean -fd
+
+    [ $? ] && e_done "Done"
+  fi
+
+  # sync with git
+  sync_git
+}
+
+function link_git {
+  ln -fs $DOTFILES_PATH/gitattributes ~/.gitattributes
+  ln -fs $DOTFILES_PATH/gitconfig ~/.gitconfig
+  ln -fs $DOTFILES_PATH/gitignore ~/.gitignore
+  ln -fs $DOTFILES_PATH/gitmessage ~/.gitmessage
+}
+
+function create_gitconfig {
+  local gitconfiguser=~/.gitconfig.user
+
+  if [ ! -a $gitconfiguser ]; then
+    e_info "Creating gitconfig.user"
+    # Create user gitconfig
+    local gitemail=
+    local gitname=
+    touch gitconfiguser
+
+    vared -h -p "Enter your github user.name: " gitname
+    vared -h -p "Enter your github user.email: " gitemail
+
+    cat > "$gitconfiguser" <<EOT
+[user]
+    name = $gitname
+    email = $gitemail
+EOT
+    e_info "successfully created ~/.gitconfig.user"
+
+    # Cleanup
+    unset gitconfiguser gitemail gitname
+
+    [ $? ] && e_done "Done"
+  fi
+}
