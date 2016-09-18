@@ -4,14 +4,15 @@ function update_nvim {
   # e_info "Linking NeoVim..."
 
   if [ ! -d ~/.config/nvim ]; then
-    mkdir -p ~/.config/nvim
+    mkdir -p ~/.config/nvim/autoload
   fi
 
-  # Vundle
-  ln -fs $DOTFILES_PATH/config/nvim/bundle ~/.config/nvim/bundle
+  # Plug
+  ln -fs $DOTFILES_PATH/config/nvim/autoload/plug.vim ~/.config/nvim/autoload/plug.vim
   # .vimrc
   ln -fs $DOTFILES_PATH/config/nvim/init.vim ~/.config/nvim/init.vim
 
+  # NeoVim and Vim share configs
   ln -s $DOTFILES_PATH/config/nvim ~/.vim
   ln -s $DOTFILES_PATH/config/nvim/init.vim ~/.vimrc
 

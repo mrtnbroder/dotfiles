@@ -20,14 +20,11 @@ filetype off
 "###############################################################################
 
 " Set the runtime path to include Plug and initialize
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 "###############################################################################
 "# Plugs
 "###############################################################################
-
-" Let Plug manage Plug
-Plug 'PlugVim/Plug.vim'
 
 " Emmet
 Plug 'mattn/emmet-vim'
