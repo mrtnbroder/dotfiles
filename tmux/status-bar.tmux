@@ -10,6 +10,8 @@ tm_color_inactive=colour241
 # THEME
 #
 
+# source ~/.tmux/plugins/tmux-git-status-bar/git-status-bar.tmux
+
 set -g pane-border-fg colour242
 set -g status-bg black
 set -g status-fg white

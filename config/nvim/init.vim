@@ -12,9 +12,6 @@ set nocompatible
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Remove automatic plugin identation (required by Plug)
-filetype off
-
 "###############################################################################
 "# Plug
 "###############################################################################
@@ -49,14 +46,11 @@ Plug 'tpope/vim-surround'
 " Fuzzy search
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Better and faster grep ### DEPRECATED
-" Plug 'rking/ag.vim'
-
 " Indent guides
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Syntax highlight
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " Syntax highlight for ES2015
 Plug 'othree/yajs.vim'
@@ -64,8 +58,17 @@ Plug 'othree/yajs.vim'
 " Syntaxt highlighting for CSSNext
 " Plug 'hail2u/vim-css3-syntax'
 
+" Syntastic
+Plug 'scrooloose/syntastic'
+
+" Syntastic prefer local eslint over global
+Plug 'mtscout6/syntastic-local-eslint.vim'
+
 " Code snippets
 Plug 'sirver/ultisnips'
+
+" Basic UltiSnip snippets
+Plug 'honza/vim-snippets'
 
 " Real time color preview for CSS
 Plug 'ap/vim-css-color'
@@ -86,13 +89,19 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-abolish'
 
 " Programming metrics
-" Plug 'wakatime/vim-wakatime'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Async keyword completion
+Plug 'Shougo/deoplete.nvim'
 
 " Automatically create folders when writing buffers to disk
 Plug 'pbrisbin/vim-mkdir'
 
 " Smarter increment/decrement numbers for Vim
 Plug 'tpope/vim-speeddating'
+
+" Vim colorschemes
+Plug 'atelierbram/Base2Tone-vim'
 
 " Show Git diff indicators on the sidebar
 " Plug 'airblade/vim-gitgutter'
@@ -214,23 +223,25 @@ autocmd BufRead,BufNewFile *.md,gitcommit setlocal spell complete+=kspell
 "# Theming
 "###############################################################################
 
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
 " Set background
 set background=dark
 
 " Define color scheme
-colorscheme solarized
+colorscheme Base2Tone-Sea-dark
 
 " Enable italic text
 highlight Comment cterm=italic
-
-highlight ColorColumn ctermbg=7
 
 " Display current line number in bold text
 highlight CursorLineNr cterm=bold
 
 " Set hidden characters colors to light gray
-highlight NonText ctermfg=187 ctermbg=white
-highlight SpecialKey ctermfg=187 ctermbg=white
+" highlight NonText ctermfg=187 ctermbg=white
+" highlight SpecialKey ctermfg=187 ctermbg=white
 
 "###############################################################################
 "# Emmet
@@ -247,25 +258,23 @@ autocmd FileType html,erb,css,scss EmmetInstall
 "###############################################################################
 
 " Use Git's `ls-files` and properly ignore hidden files
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Remap most used CtrlP commands
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 
 " ignore gitignore files in CtrlP v2
-" if executable('ag')
-"   " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-"   set grepprg=ag\ --nogroup\ --nocolor
-"   " Use ag in CtrlP for listing files. Lightning fast, respects .gitignore
-"   " and .agignore. Ignores hidden files by default.
-"   let g:ctrlp_user_command = 'ag %s -l --nocolor -f -g ""'
-" else
-"   "ctrl+p ignore files in .gitignore
-"   let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-" endif
-
-autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+if executable('ag')
+  " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in CtrlP for listing files. Lightning fast, respects .gitignore
+  " and .agignore. Ignores hidden files by default.
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -f -g ""'
+else
+  "ctrl+p ignore files in .gitignore
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+endif
 
 "###############################################################################
 "# Indent guides
@@ -277,15 +286,21 @@ let g:indent_guides_guide_size = 1
 
 " Disable automatic colors and specify custom ones
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=gray
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=lightgray
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 
 "###############################################################################
 "# Polyglot
 "###############################################################################
 
 " Disable JavaScript on Polyglot due to conflicts with yajs
-" let g:polyglot_disabled = ['javascript']
+let g:polyglot_disabled = ['javascript']
+
+"###############################################################################
+"# Syntastic
+"###############################################################################
+
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
 
 "###############################################################################
 "# UltiSnips
@@ -299,52 +314,131 @@ let g:UltiSnipsEditSplit='vertical'
 
 let g:lightline = {
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
-      \   'readonly': 'LightLineReadonly',
-      \   'modified': 'LightLineModified',
-      \   'filename': 'LightLineFilename'
-      \ }
+      \   'filename': 'LightLineFilename',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \   'ctrlpmark': 'CtrlPMark',
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag',
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
 
 function! LightLineModified()
-  if &filetype == 'help'
-    return ''
-  elseif &modified
-    return '*'
-  elseif &modifiable
-    return ''
-  else
-    return ''
-  endif
+  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
 function! LightLineReadonly()
-  if &filetype == 'help'
-    return ''
-  elseif &readonly
-    return '⭤'
+  return &ft !~? 'help' && &readonly ? 'RO' : ''
+endfunction
+
+function! LightLineFilename()
+  let fname = expand('%:t')
+  return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
+        \ fname =~ '__Gundo\|NERD_tree' ? '' :
+        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \ &ft == 'unite' ? unite#get_status_string() :
+        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+        \ ('' != fname ? fname : '[No Name]') .
+        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+  try
+    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+      let mark = ''  " edit here for cool mark
+      let branch = fugitive#head()
+      return branch !=# '' ? mark.branch : ''
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ fname == '__Gundo__' ? 'Gundo' :
+        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname =~ 'NERD_tree' ? 'NERDTree' :
+        \ &ft == 'unite' ? 'Unite' :
+        \ &ft == 'vimfiler' ? 'VimFiler' :
+        \ &ft == 'vimshell' ? 'VimShell' :
+        \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! CtrlPMark()
+  if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
+    call lightline#link('iR'[g:lightline.ctrlp_regex])
+    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
+          \ , g:lightline.ctrlp_next], 0)
   else
     return ''
   endif
 endfunction
 
-function! LightLineFugitive()
-  if exists('*fugitive#head')
-    let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
-  endif
-  return ''
+let g:ctrlp_status_func = {
+  \ 'main': 'CtrlPStatusFunc_1',
+  \ 'prog': 'CtrlPStatusFunc_2',
+  \ }
+
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+  let g:lightline.ctrlp_regex = a:regex
+  let g:lightline.ctrlp_prev = a:prev
+  let g:lightline.ctrlp_item = a:item
+  let g:lightline.ctrlp_next = a:next
+  return lightline#statusline(0)
 endfunction
 
-function! LightLineFilename()
-  return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != LightLineModified() ? '' . LightLineModified() : ' ')
+function! CtrlPStatusFunc_2(str)
+  return lightline#statusline(0)
 endfunction
+
+let g:tagbar_status_func = 'TagbarStatusFunc'
+
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.c,*.cpp call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
 
 "###############################################################################
 "# HardMode
@@ -352,29 +446,3 @@ endfunction
 
 " Boot into HardMode
 " autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-
-"###############################################################################
-"# HyperTerm
-"###############################################################################
-
-" if $TERM_PROGRAM == 'hyperterm'
-"   autocmd BufRead,BufNewFile *.* setlocal nospell complete=
-"   colorscheme default
-"   hi CursorLineNr ctermfg=none cterm=bold
-"   hi LineNr ctermfg=none
-"   hi NonText ctermfg=darkgray
-"   hi SpecialKey ctermfg=darkgray
-"   hi Comment cterm=none ctermfg=darkgray
-"   hi Constant cterm=bold ctermfg=white
-"   hi Identifier cterm=bold ctermfg=white
-"   hi Function cterm=bold ctermfg=white
-"   hi Statement cterm=bold ctermfg=white
-"   hi PreProc cterm=bold ctermfg=white
-"   hi Type cterm=bold ctermfg=white
-"   hi Special cterm=bold ctermfg=white
-"   hi Delimiter cterm=bold ctermfg=white
-"   hi Search cterm=bold ctermfg=white ctermbg=magenta
-"   hi Visual cterm=none ctermfg=white ctermbg=magenta
-"   set colorcolumn=
-"   set nocursorline
-" endif

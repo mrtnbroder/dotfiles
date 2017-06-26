@@ -1,2 +1,2 @@
-# Automatically normalize line endings for all text-based files
-* text=
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto

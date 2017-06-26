@@ -25,3 +25,5 @@ status --is-interactive; and . (nodenv init -|psub)
 
 # init rbenv
 status --is-interactive; and . (rbenv init -|psub)
+
+source ~/.dotfiles/config/fish/functions/git/aliases.fish
