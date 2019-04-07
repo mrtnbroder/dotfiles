@@ -3,15 +3,26 @@
   interactive = auto
 [credential]
   helper = osxkeychain
+[merge]
+  ff = only
 [diff]
   tool = mvimdiff
 [commit]
   template = ~/.gitmessage
 [push]
   default = current
+[rebase]
+  autosquash = true
 [include]
-  path = .gitconfig.user
-[filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  path = ~/.gitconfig.local
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+  editor = nvim
+[fetch]
+  prune = true
+[user]
+  name = Martin Broder
+  email = mrtnbroder@gmail.com
+[mergetool]
+  keepBackup = false

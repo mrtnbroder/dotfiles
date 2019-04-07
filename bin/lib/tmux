@@ -9,7 +9,7 @@ update_tmux() {
 
   ln -fs $DOTFILES_PATH/tmux.conf ~/.tmux.conf
   ln -fs $DOTFILES_PATH/tmux/plugins.tmux ~/.tmux/plugins.tmux
-  # ln -fs $DOTFILES_PATH/tmux/status-bar.tmux ~/.tmux/status-bar.tmux
+  ln -fs $DOTFILES_PATH/tmux/status-bar.tmux ~/.tmux/status-bar.tmux
 
   # [ $? ] && e_done "Done"
 }

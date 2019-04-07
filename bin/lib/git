@@ -43,10 +43,10 @@ function link_git {
 }
 
 function create_gitconfig {
-  local gitconfiguser=~/.gitconfig.user
+  local gitconfiguser=~/.gitconfig.local
 
   if [ ! -f $gitconfiguser ]; then
-    e_info "Creating gitconfig.user"
+    e_info "Creating gitconfig.local"
     # Create user gitconfig
     local gitemail=
     local gitname=
@@ -60,7 +60,7 @@ function create_gitconfig {
     name = $gitname
     email = $gitemail
 EOT
-    e_info "successfully created ~/.gitconfig.user"
+    e_info "successfully created ~/.gitconfig.local"
 
     # Cleanup
     unset gitconfiguser gitemail gitname

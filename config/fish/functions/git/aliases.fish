@@ -1,9 +1,8 @@
+#
+# git aliases
+#
 
-function git_aliases -d 'setup git aliases'
-  #
-  # Aliases
-  #
-
+function setup_git_aliases -d 'Setup aliases for git'
   # Git
   alias g='git'
 
@@ -159,4 +158,4 @@ function git_aliases -d 'setup git aliases'
   alias gwX='git rm -rf'
 end
 
-git_aliases
+setup_git_aliases

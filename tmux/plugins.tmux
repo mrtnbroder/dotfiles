@@ -7,8 +7,8 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # set -g @plugin 'tmux-plugins/tmux-sidebar'
 # set -g @plugin 'tmux-plugins/tmux-resurrect'
 # set -g @plugin 'tmux-plugins/tmux-continuum'
-# set -g @plugin 'tmux-plugins/tmux-yank'
-# set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-battery'
 
 # install tpm if not already installed
 if "test ! -d ~/.tmux/plugins/tpm" \

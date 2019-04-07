@@ -1,49 +1,12 @@
 
-#
-# COLORS
-#
+# soften status bar color from harsh green to light gray
+set -g status-bg default
+set -g status-fg 'colour250'
 
-tm_color_active=colour51
-tm_color_inactive=colour241
+setw -g window-status-format         '#(echo "#{pane_current_command}")  '
+setw -g window-status-current-format '#(echo "#{pane_current_command}") '
 
-#
-# THEME
-#
-
-# source ~/.tmux/plugins/tmux-git-status-bar/git-status-bar.tmux
-
-set -g pane-border-fg colour242
-set -g status-bg black
-set -g status-fg white
-set -g window-status-current-bg default
-set -g window-status-current-fg white
-
-# active window title colors
-set-window-option -g window-status-current-fg $tm_color_active
-set-window-option -g window-status-current-bg default
-set-window-option -g  window-status-current-format "#[bold]#I #W"
-
-# message text
-set-option -g message-bg default
-set-option -g message-fg $tm_color_active
-
-# pane number display
-set-option -g display-panes-active-colour $tm_color_active
-set-option -g display-panes-colour $tm_color_inactive
-
-# prettify status pane alignment
-set -g status-justify centre
-
-#
-# LEFT STATUS
-#
-
-set -g status-left '#[fg=green]#(whoami)'
-
-#
-# RIGHT STATUS
-#
-
-tm_date='%a %h-%d %H:%M'
-
-set -g status-right '#{battery_percentage} | '$tm_date
+setw -g window-status-current-fg red
+set -g status-left ""
+set -g status-right-length 60
+set -g status-right 'Batt: #{battery_percentage} | %a %d-%h %Y %H:%M'

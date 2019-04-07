@@ -31,6 +31,9 @@ call plug#begin('~/.config/nvim/plugged')
 "# Plugs
 "###############################################################################
 
+" Fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
 " Emmet
 Plug 'mattn/emmet-vim'
 
@@ -125,6 +128,9 @@ filetype plugin indent on
 " Show line numbers
 set number
 
+" Create the 'tags' file (may need to install ctags first)
+" command! MakeTags !ctags -R .
+
 " Numbers are relative to cursor
 set relativenumber
 
@@ -149,12 +155,19 @@ set list
 " Highlight current line
 set cursorline
 
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
 " Highlight column 80
 set colorcolumn=80
 set linebreak
 
 " Give one virtual space at end of line
 set virtualedit=onemore
+
+" Ignore node_modules
+set wildignore+=**/node_modules/**
 
 " Complete files like a shell
 set wildmenu wildmode=full
@@ -231,7 +244,7 @@ endif
 set background=dark
 
 " Define color scheme
-colorscheme Base2Tone-Sea-dark
+" colorscheme Base2Tone-Sea-dark
 
 " Enable italic text
 highlight Comment cterm=italic
@@ -445,4 +458,4 @@ let g:vimshell_force_overwrite_statusline = 0
 "###############################################################################
 
 " Boot into HardMode
-" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()

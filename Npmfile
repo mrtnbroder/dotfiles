@@ -1,5 +1,13 @@
+alfred-github
 alfred-npms
-eslint
-npm-check-updates
-standard-version
+bower
 flow-bin
+flow-typed
+git-home
+git-open
+lerna
+npm-check-updates
+pulp
+purescript
+serve
+standard-version

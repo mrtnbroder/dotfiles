@@ -10,7 +10,6 @@ function link_fish {
 
   # fisher
   ln -fs $DOTFILES_PATH/config/fish/fishfile ~/.config/fish/fishfile
-  ln -fs $DOTFILES_PATH/config/fish/functions/fisher.fish ~/.config/fish/functions/fisher.fish
 }
 
 function update_fish {

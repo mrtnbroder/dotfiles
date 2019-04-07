@@ -4,24 +4,27 @@ coreutils
 fasd
 figlet
 fish
+git
+git-flow
 gource
 graphicsmagick
 imagemagick
 jpeg
 mackup
-macvim --with-override-system-vim
 neovim
 nodenv
 optipng
 pngcrush
 pngquant
+python3
 rbenv
 reattach-to-user-namespace
 rsync
 the_silver_searcher
 tmux
+tree
 unrar
 wget --with-iri
 wrk
-tree
+yarn
 zsh
