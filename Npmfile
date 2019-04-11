@@ -1,13 +1,8 @@
 alfred-github
 alfred-npms
 bower
-flow-bin
-flow-typed
-git-home
-git-open
 lerna
 npm-check-updates
 pulp
 purescript
-serve
 standard-version

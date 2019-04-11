@@ -28,10 +28,10 @@ Desktop.ini
 # Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
 # ----------------------------------------------------------------------------------------------
 # Ignore tags created by etags, ctags, gtags (GNU global) and cscope
-TAGS
+# TAGS
 .TAGS
 !TAGS/
-tags
+# tags
 .tags
 !tags/
 gtags.files
@@ -95,4 +95,7 @@ Session.vim
 # temporary
 .netrwhist
 # auto-generated tag files
-tags
+# tags
+
+# Node
+node_modules
