@@ -4,7 +4,7 @@
 # - EXPORTS
 #
 
-export DOTFILES_PATH="$HOME/.dotfiles"
-export ZPLUG_PATH="$HOME/.zplug"
+export DOTFILES_PATH="$HOME/Documents/GitHub/dotfiles"
 export DOTFILES_GIT_URL="https://github.com/mrtnbroder/dotfiles"
 export DOTFILES_TAR_URL="$DOTFILES_GIT_URL/tarball/master"
+export LC_ALL=en_US.UTF-8

@@ -1,19 +1,19 @@
 #!/usr/bin/env zsh
 
-function link_npm {
+link_npm() {
   ln -fs $DOTFILES_PATH/npmrc ~/.npmrc
 }
 
-function update_npm {
+update_yarn() {
   link_npm
 
   # Update NPM packages
   e_info "Updating NPM packages..."
-  npm up -g
+  yarn global upgrade
   [ $? ] && e_done
 
   # Install NPM packages stuff
   e_info "Installing NPM packages..."
-  cat $DOTFILES_PATH/Npmfile | grep -v '^#' | xargs npm i -g # &> /dev/null
+  cat $DOTFILES_PATH/Npmfile | grep -v '^#' | xargs yarn global add # &> /dev/null
   [ $? ] && e_done
 }

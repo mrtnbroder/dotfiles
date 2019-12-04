@@ -4,7 +4,7 @@ fish
 git
 git-flow
 neovim
-python3
+pyenv
 rbenv
 nodenv
 rsync

@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-function update_casks {
+update_casks() {
   # Install Cask if not available
-  if [ -z `which brew cask` ]; then
+  if [ -z $(which brew cask) ]; then
     echo "Installing Cask..."
     brew tap caskroom/cask # &> /dev/null
   fi

@@ -1,28 +1,28 @@
 [color]
-  ui = auto
-  interactive = auto
+ui = auto
+interactive = auto
 [credential]
-  helper = osxkeychain
+helper = osxkeychain
 [merge]
-  ff = only
+ff = only
 [diff]
-  tool = mvimdiff
+tool = mvimdiff
 [commit]
-  template = ~/.gitmessage
+template = ~/.gitmessage
 [push]
-  default = current
+default = current
 [rebase]
-  autosquash = true
+autosquash = true
 [include]
-  path = ~/.gitconfig.local
+path = ~/.gitconfig.local
 [core]
-  excludesfile = ~/.gitignore
-  autocrlf = input
-  editor = nvim
+excludesfile = ~/.gitignore
+autocrlf = input
+editor = nvim
 [fetch]
-  prune = true
+prune = true
 [user]
-  name = Martin Broder
-  email = mrtnbroder@gmail.com
+name = Martin Broder
+email = mrtnbroder@gmail.com
 [mergetool]
-  keepBackup = false
+keepBackup = false

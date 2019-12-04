@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function link_nvim {
+link_nvim() {
   if [ ! -d ~/.config/nvim ]; then
     mkdir -p ~/.config/nvim/autoload
   fi
@@ -16,7 +16,7 @@ function link_nvim {
   ln -fs $DOTFILES_PATH/config/nvim/init.vim ~/.vimrc
 }
 
-function update_nvim {
+update_nvim() {
   e_info "Linking NeoVim..."
 
   link_nvim

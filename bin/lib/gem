@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
-function link_gem {
+link_gem() {
   ln -fs $DOTFILES_PATH/gemrc ~/.gemrc
 }
 
-function update_gem {
+update_gem() {
   link_gem
 
   # Update Gems

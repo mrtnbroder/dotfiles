@@ -1,49 +1,51 @@
 #!/usr/bin/env zsh
 
-function e_ask {
+e_ask() {
   printf "\n$1\n"
   printf "(Y/n): "
 }
 
-function e_warn {
+e_warn() {
   printf "${Yellow}Warning: $1${NC}\n"
 }
 
-function e_error {
+e_error() {
   printf "${Red}✘ $1${NC}\n"
   exit 1
 }
 
-function e_done {
+e_done() {
   echo "${Green}✔ Done.${NC}"
 }
 
-function e_info {
+e_info() {
   echo "\n${Cyan}➜ ${1}${NC}"
 }
 
-function is_confirmed {
+is_confirmed() {
   read -rs -k 1 ans
   case $ans in
-    n|N)
-      printf "No\n\n"
-      return 1
-      ;;
-    y|Y|$'\n')
-      printf "Yes\n\n"
-      return 0
-      ;;
-    *)
-      printf "\n\n"
-      e_error "Please type in [y]es or [n]o.\n\n"
-      return 1
+  n | N)
+    printf "No\n\n"
+    return 1
+    ;;
+  y | Y | $'\n')
+    printf "Yes\n\n"
+    return 0
+    ;;
+  *)
+    printf "\n\n"
+    e_error "Please type in [y]es or [n]o.\n\n"
+    return 1
+    ;;
   esac
 }
 
 # Test whether a command exists
 # $1 - cmd to test
-function command_exists {
-  type "$1" &> /dev/null
+command_exists() {
+  type "$1" &
+  >/dev/null
 }
 
 # function copy_fonts {

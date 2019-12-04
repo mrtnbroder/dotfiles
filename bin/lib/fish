@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function link_fish {
+link_fish() {
   if [ ! -d ~/.config/fish/functions ]; then
     mkdir -p ~/.config/fish/functions
   fi
@@ -12,7 +12,7 @@ function link_fish {
   ln -fs $DOTFILES_PATH/config/fish/fishfile ~/.config/fish/fishfile
 }
 
-function update_fish {
+update_fish() {
   e_info "Linking fishshell stuff..."
 
   link_fish

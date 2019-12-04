@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function sync_git {
+sync_git() {
   if ! $no_sync; then
     # Sync with remote repository
     e_info "Updating dotfiles"
@@ -14,8 +14,11 @@ function sync_git {
   fi
 }
 
-function init_git {
-  if ! $( git rev-parse --is-inside-work-tree &> /dev/null ); then
+init_git() {
+  if ! $(
+    git rev-parse --is-inside-work-tree &
+    >/dev/null
+  ); then
     # Initialize the git repository if it's missing
     e_info "Initializing Git Repository"
 
@@ -35,14 +38,14 @@ function init_git {
   sync_git
 }
 
-function link_git {
+link_git() {
   ln -fs $DOTFILES_PATH/gitattributes ~/.gitattributes
   ln -fs $DOTFILES_PATH/gitconfig ~/.gitconfig
   ln -fs $DOTFILES_PATH/gitignore ~/.gitignore
   ln -fs $DOTFILES_PATH/gitmessage ~/.gitmessage
 }
 
-function create_gitconfig {
+create_gitconfig() {
   local gitconfiguser=~/.gitconfig.local
 
   if [ ! -f $gitconfiguser ]; then
@@ -55,7 +58,7 @@ function create_gitconfig {
     vared -h -p "Enter your github user.name: " gitname
     vared -h -p "Enter your github user.email: " gitemail
 
-    cat > "$gitconfiguser" <<EOT
+    cat >"$gitconfiguser" <<EOT
 [user]
     name = $gitname
     email = $gitemail

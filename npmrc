@@ -1,2 +1,4 @@
+always-auth=true
 save-exact=true
 loglevel=warn
+ignore-scripts=true

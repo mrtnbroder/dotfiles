@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-function check_required_commands {
+check_required_commands() {
   e_info "Checking for XCode, Homebrew and Git..."
 
   # - XCODE
