@@ -48,13 +48,13 @@ if is_confirmed; then
   source "$BASE_DIR/lib/fish"
   update_fish
 
-  # NPM
-  source "$BASE_DIR/lib/npm"
-  update_npm
+  # Yarn
+  source "$BASE_DIR/lib/yarn"
+  # update_yarn
 
   # Gem
   source "$BASE_DIR/lib/gem"
-  update_gem
+  # update_gem
 
   # Tmux
   source "$BASE_DIR/lib/tmux"
