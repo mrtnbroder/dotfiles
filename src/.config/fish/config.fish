@@ -1,6 +1,7 @@
-set -g EDITOR nvim
-set -g VISUAL nvim
-set -g BROWSER brave-browser
+set fish_home ~/.config/fish
+
+source $fish_home/environment.fish
+source $fish_home/abbrs.fish
 
 # pyenv
 status --is-interactive
@@ -43,9 +44,9 @@ function __autoload_require
     set -g fish_color_status red
     set -g fish_color_valid_path '--underline'
 
-    set -l core_function_path $DOTFILES_PATH/config/fish/functions/{general,git,npm,yarn}
+    # set -l core_function_path $DOTFILES_PATH/config/fish/functions/{general,git,npm,yarn}
 
-    set fish_function_path $fish_function_path[1] $core_function_path $fish_function_path[2..-1]
+    # set fish_function_path $fish_function_path[1] $core_function_path $fish_function_path[2..-1]
 
     # Brew puts some binaries into this path
     set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
