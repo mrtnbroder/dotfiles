@@ -10,6 +10,9 @@
 [credential]
 	helper = osxkeychain
 
+[hub]
+	protocol = ssh
+
 [merge]
 	ff = only
 
@@ -17,7 +20,6 @@
 	tool = mvimdiff
 
 [commit]
-	verbose = true
 	gpgsign = true
 	template = ~/.gitmessage
 
