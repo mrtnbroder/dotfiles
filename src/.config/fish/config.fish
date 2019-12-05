@@ -1,9 +1,6 @@
-
-source $HOME/Documents/GitHub/dotfiles/bin/lib/exports
-
 set -g EDITOR nvim
 set -g VISUAL nvim
-set -g BROWSER google-chrome
+set -g BROWSER brave-browser
 
 # pyenv
 status --is-interactive

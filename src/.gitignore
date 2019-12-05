@@ -189,7 +189,7 @@ yarn-debug.log*
 
 *.gem
 *.rbc
-/.config
+# /.config
 /coverage/
 /InstalledFiles
 /pkg/
@@ -246,7 +246,7 @@ build-iPhoneSimulator/
 
 # Swap
 [._]*.s[a-v][a-z]
-!*.svg  # comment out if you don't need vector files
+!*.svg # comment out if you don't need vector files
 [._]*.sw[a-p]
 [._]s[a-rt-v][a-z]
 [._]ss[a-gi-z]
@@ -271,7 +271,6 @@ tags
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
@@ -308,4 +307,3 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-

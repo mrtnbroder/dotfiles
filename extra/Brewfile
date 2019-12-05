@@ -1,0 +1,55 @@
+# vim:ft=ruby:
+
+cask_args appdir: '/Applications'
+
+tap "caskroom/cask"
+tap "caskroom/fonts"
+tap "caskroom/versions"
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+# Core
+brew "openssl"
+brew "git"
+brew "git-flow"
+brew "git-lfs"
+brew "gnupg"
+brew "wget", with_iri: true
+brew "curl"
+brew "coreutils"
+brew "ack"
+brew "rsync"
+brew "fish"
+brew "bash"
+brew "zsh"
+
+# Languages
+brew "nodenv"
+brew "pyenv"
+brew "rbenv"
+brew "yarn"
+
+# Core utils
+# brew "ranger"
+brew "tree"
+brew "jq"
+
+# Core apps
+brew "neovim"
+brew "tmux"
+# brew "youtube-dl"
+
+# Nice to have
+brew "neofetch", args: ["HEAD"]
+# brew "nnn"
+# brew "figlet"
+brew "wrk"
+brew "editorconfig"
+
+cask "kitty"
+cask "keybase"
+cask "sketch"
+cask "brave-browser"
+cask "firefox"
+cask "alfred"
+cask "docker"
