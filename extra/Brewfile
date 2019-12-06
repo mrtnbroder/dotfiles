@@ -2,25 +2,29 @@
 
 cask_args appdir: '/Applications'
 
-tap "caskroom/cask"
-tap "caskroom/fonts"
-tap "caskroom/versions"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap 'homebrew/completions'
 
 # Core
-brew "openssl"
+brew "ack"
+brew "bash"
+brew "coreutils"
+brew "curl"
+brew "fish"
 brew "git"
 brew "git-flow"
 brew "git-lfs"
 brew "gnupg"
-brew "wget", with_iri: true
-brew "curl"
-brew "coreutils"
-brew "ack"
+# https://hub.github.com/
+brew "hub"
+brew "mas"
+brew "openssl"
 brew "rsync"
-brew "fish"
-brew "bash"
+brew "wget"
 brew "zsh"
 
 # Languages
@@ -30,9 +34,9 @@ brew "rbenv"
 brew "yarn"
 
 # Core utils
+brew "jq"
 # brew "ranger"
 brew "tree"
-brew "jq"
 
 # Core apps
 brew "neovim"
@@ -40,28 +44,36 @@ brew "tmux"
 # brew "youtube-dl"
 
 # Nice to have
-brew "neofetch", args: ["HEAD"]
-# brew "nnn"
-# brew "figlet"
-brew "wrk"
 brew "editorconfig"
+brew "figlet"
+brew "neofetch"
+# brew "nnn"
+brew "wrk"
 
-cask "kitty"
-cask "slack"
-cask "visual-studio-code"
-cask "sketch"
-cask "brave-browser"
-cask "firefox"
+# Apps
+cask "1password"
+cask "adobe-creative-cloud"
 cask "alfred"
-cask "docker"
-cask "tower"
 cask "bartender"
+cask "brave-browser"
 cask "cleanmymac"
 cask "dash"
+cask "docker"
 cask "dropbox"
 cask "fantastical"
+cask "firefox"
 cask "imageoptim"
+cask "kitty"
 cask "paw"
+cask "sketch"
+cask "slack"
 cask "spectacle"
 cask "telegram"
-cask "adobe-creative-cloud"
+cask "the-unarchiver"
+cask "tower"
+cask "visual-studio-code"
+
+# AppStore Apps
+mas "jira-cloud-by-atlassian", id: 1475897096
+mas "things-3", id: 904280696
+# mas "xcode", id: 497799835
