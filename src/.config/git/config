@@ -11,7 +11,7 @@
 	helper = osxkeychain
 
 [hub]
-	protocol = ssh
+	protocol = git
 
 [merge]
 	ff = only
@@ -21,7 +21,7 @@
 
 [commit]
 	gpgsign = true
-	template = ~/.gitmessage
+	template = ~/.git.d/template
 
 [push]
 	default = current
@@ -33,7 +33,6 @@
 	autosquash = true
 
 [core]
-	excludesfile = ~/.gitignore
 	commitGraph = true
 	autocrlf = input
 	editor = $EDITOR
@@ -45,4 +44,4 @@
 	keepBackup = false
 
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.git.d/config.local

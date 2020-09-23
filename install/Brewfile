@@ -7,7 +7,7 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap 'homebrew/completions'
+# tap 'homebrew/completions'
 
 # Core
 brew "ack"
@@ -41,6 +41,7 @@ brew "tree"
 # Core apps
 brew "neovim"
 brew "tmux"
+brew "vifm"
 # brew "youtube-dl"
 
 # Nice to have
@@ -64,6 +65,7 @@ cask "fantastical"
 cask "firefox"
 cask "imageoptim"
 cask "kitty"
+cask "little-snitch"
 cask "paw"
 cask "sketch"
 cask "slack"
@@ -76,4 +78,4 @@ cask "visual-studio-code"
 # AppStore Apps
 mas "jira-cloud-by-atlassian", id: 1475897096
 mas "things-3", id: 904280696
-# mas "xcode", id: 497799835
+mas "xcode", id: 497799835

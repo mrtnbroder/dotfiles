@@ -12,6 +12,9 @@ and source (rbenv init -|psub)
 # nodenv
 status --is-interactive
 and source (nodenv init -|psub)
+# Haskell
+set PATH $HOME/.cabal/bin $PATH
+set PATH $HOME/.ghcup/bin $PATH
 
 # load all fish functions from the functions directory
 function __autoload_require
