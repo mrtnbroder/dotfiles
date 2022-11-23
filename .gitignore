@@ -3,9 +3,6 @@
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
-
 # Thumbnails
 ._*
 
@@ -25,11 +22,4 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-src/.config/fish/fish_variables
-src/.config/fish/functions/_*
-src/.config/fish/functions/getopts.fish
-src/.config/fish/functions/fish_title.fish
-src/.config/fish/functions/fish_prompt.fish
-src/.config/fish/functions/fish_mode_prompt.fish
-src/.config/fish/conf.d
-src/.vim/plugged
+*.retry

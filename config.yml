@@ -1,0 +1,95 @@
+---
+brew_taps:
+  - homebrew/bundle
+  - homebrew/cask
+  - homebrew/cask-fonts
+  - homebrew/cask-versions
+  - homebrew/services
+
+brew_packages:
+  - ack
+  - ansible
+  - bash
+  - coreutils
+  - curl
+  - editorconfig
+  - fish
+  - gh
+  - git
+  - git-flow
+  - gnupg
+  - gpg2
+  - hub
+  - imagemagick
+  - jq
+  - mas
+  - neovim
+  - nodenv
+  - openssl
+  - pyenv
+  - rbenv
+  - redis
+  - rsync
+  - ruby
+  - tmux
+  - tree
+  - vifm
+  - wget
+  - yarn
+  - zsh
+
+cask_packages:
+  - 1password
+  - alfred
+  - bartender
+  - brave-browser
+  - cleanmymac
+  - dash
+  - docker
+  - dropbox
+  - fantastical
+  - firefox
+  - google-chrome
+  - imageoptim
+  - kitty
+  - little-snitch
+  - rectangle
+  - slack
+  - telegram
+  - the-unarchiver
+  - tower
+  - transmit
+  - visual-studio-code
+
+font_packages:
+  - font-jetbrains-mono-nerd-font
+  # - font-ubuntu-mono-nerd-font
+  # - font-fira-mono-nerd-font
+
+gem_packages:
+
+mas_packages:
+  # - 1475897096 # Jira
+  # - 497799835 # XCode
+  - 904280696  # Things 3
+
+npm_packages:
+  # - alfred-emoj
+  # - alfred-github
+  # - alfred-npms
+  - gitmoji-cli
+  # - hasura-cli
+  - npm-check-updates
+  - pnpm
+  # - pulp
+  # - purescript
+  # - standard-version
+  - style-dictionary
+  - typescript
+  - vercel
+
+pip_packages:
+  - ansible-lint
+  - awscli
+  - docker
+

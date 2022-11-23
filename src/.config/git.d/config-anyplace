@@ -1,7 +1,6 @@
 ; vim: ft=gitconfig
 
 [user]
-	name = Martin Broder
 	email =	martin@anyplace.com
 	signingkey =
 

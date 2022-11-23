@@ -1,66 +1,43 @@
-set fish_home ~/.config/fish
-
-source $fish_home/environment.fish
-source $fish_home/abbrs.fish
-
-# pyenv
-status --is-interactive
-and source (pyenv init -|psub)
-# rbenv
-status --is-interactive
-and source (rbenv init -|psub)
-# nodenv
-status --is-interactive
-and source (nodenv init -|psub)
-# Haskell
-set PATH $HOME/.cabal/bin $PATH
-set PATH $HOME/.ghcup/bin $PATH
-
-# load all fish functions from the functions directory
-function __autoload_require
-    set -g fish_color_normal normal
-    set -g fish_color_command green
-    set -g fish_color_quote yellow
-    set -g fish_color_redirection normal
-    set -g fish_color_end normal
-    set -g fish_color_error red
-    set -g fish_color_param cyan
-    set -g fish_color_comment normal
-    set -g fish_color_match yellow
-    set -g fish_color_search_match bryellow # --background=brblack
-    set -g fish_color_operator bryellow
-    set -g fish_color_escape bryellow --bold
-    set -g fish_color_cwd green
-    set -g fish_color_autosuggestion normal
-    set -g fish_color_user green
-    set -g fish_color_host normal
-    set -g fish_color_cancel -r
-
-    set -g fish_pager_color_prefix white # --bold --underline
-    set -g fish_pager_color_completion
-    set -g fish_pager_color_description yellow
-    set -g fish_pager_color_progress white # --background=cyan
-
-    set -g fish_color_cwd_root red
-    set -g fish_color_history_current '--bold'
-    set -g fish_color_selection -r
-    set -g fish_color_status red
-    set -g fish_color_valid_path '--underline'
-
-    # set -l core_function_path $DOTFILES_PATH/config/fish/functions/{general,git,npm,yarn}
-
-    # set fish_function_path $fish_function_path[1] $core_function_path $fish_function_path[2..-1]
-
+# Prerequisites
+function dotfiles_setup_prerequisities -d "Setup dotfiles prerequisites"
+    set -l fish_home $HOME/.config/fish
     # Brew puts some binaries into this path
-    set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+    fish_add_path /usr/local/sbin
+    source $fish_home/environment.fish
+    source $fish_home/prompt.fish
+    source $fish_home/abbrs.fish
+
+    # pyenv
+    if type -q pyenv
+        set -Ux PYENV_ROOT $HOME/.pyenv
+        fish_add_path $PYENV_ROOT/bin
+        status --is-interactive; and source (pyenv init -| psub)
+        # echo "init pyenv"
+    end
+
+    # rbenv
+    if type -q rbenv
+        status --is-interactive; and source (rbenv init -| psub)
+        # echo "init rbenv"
+    end
+
+    # nodenv
+    if type -q nodenv
+        status --is-interactive; and source (nodenv init -| psub)
+        # echo "init nodenv"
+    end
 end
 
-__autoload_require
+# Haskell
+fish_add_path $HOME/.cabal/bin
+fish_add_path $HOME/.ghcup/bin
+
+
+# set -l core_function_path $DOTFILES_PATH/config/fish/functions/{general,git,npm,yarn}
+# set fish_function_path $fish_function_path[1] $core_function_path $fish_function_path[2..-1]
 
 # fisher
-if not functions -q fisher
-    set -q XDG_CONFIG_HOME
-    or set XDG_CONFIG_HOME ~/.config
+if not type -q fisher
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
 end
@@ -75,19 +52,19 @@ end
 # always start within a tmux session
 function start_tmux
     # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
-    if type tmux >/dev/null
-        #if not inside a tmux session, and if no session is started, start a new session
-        if test -z "$TMUX"
-            and test -z $TERMINAL_CONTEXT
-            tmux -2 attach
-            or tmux -2 new-session
-        end
+    if type -q tmux; and test -z "$TMUX"; and test -z $TERMINAL_CONTEXT
+        tmux attach; or tmux new-session
     end
 end
 
-start_tmux
-autocomplete_kitty
+dotfiles_setup_prerequisities
 fish_vi_key_bindings
+starship init fish | source
+# start_tmux
+
+# autocomplete_kitty
+
+
 
 # Soure Rust Lang
 # source $HOME/.cargo/env

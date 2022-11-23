@@ -5,9 +5,12 @@ imap <C-j> <C-w>j
 imap <C-k> <C-w>k
 imap <C-l> <C-w>l
 " g Leader key
-let mapleader=" "
+" let mapleader=" "
 " let localleader=" "
-nnoremap <Space> <Nop>
+" nnoremap <Space> <Nop>
+
+" Remap the space key to toggle current fold
+nnoremap <tab> za
 
 " Better indenting
 vnoremap < <gv
@@ -32,6 +35,7 @@ else
   " Easy CAPS
   " inoremap <c-u> <ESC>viwUi
   " nnoremap <c-u> viwU<Esc>
+  "
 
   " TAB in general mode will move to text buffer
   nnoremap <silent> <TAB> :bnext<CR>

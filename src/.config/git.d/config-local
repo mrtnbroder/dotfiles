@@ -5,5 +5,5 @@
 	email =	mrtnbroder@gmail.com
 	signingkey = E7F5F691938F46B000175A670ABA9A7E35A53C6A
 
-[includeIf "gitdir:**/Anyplace/**/.git"]
-	path = ~/.git.d/config.anyplace
+[includeIf "gitdir:~/Documents/Work/Anyplace/"]
+	path = ~/.config/git.d/config-anyplace

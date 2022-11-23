@@ -2,12 +2,12 @@
 
 cask_args appdir: '/Applications'
 
+tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/bundle"
 tap "homebrew/services"
-# tap 'homebrew/completions'
 
 # Core
 brew "ack"
@@ -64,12 +64,13 @@ cask "dropbox"
 cask "fantastical"
 cask "firefox"
 cask "imageoptim"
-cask "kitty"
+# cask "kitty"
+cask "alakritty"
 cask "little-snitch"
 cask "paw"
+cask "rectangle"
 cask "sketch"
 cask "slack"
-cask "spectacle"
 cask "telegram"
 cask "the-unarchiver"
 cask "tower"

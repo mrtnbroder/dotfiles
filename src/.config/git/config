@@ -21,7 +21,7 @@
 
 [commit]
 	gpgsign = true
-	template = ~/.git.d/template
+;	template = ~/.config/git.d/template
 
 [push]
 	default = current
@@ -36,6 +36,7 @@
 	commitGraph = true
 	autocrlf = input
 	editor = $EDITOR
+	ignorecase = false
 
 [fetch]
 	prune = true
@@ -44,4 +45,10 @@
 	keepBackup = false
 
 [include]
-	path = ~/.git.d/config.local
+	path = ~/.config/git.d/config-local
+
+[init]
+	defaultBranch = main
+[user]
+	name = Martin Broder
+	email = mrtnbroder@gmail.com

@@ -3,12 +3,12 @@
 "###############################################################################
 
 " auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
-  " autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
+" if empty(glob('~/.config/nvim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"   autocmd VimEnter * PlugInstall
+"   " autocmd VimEnter * PlugInstall | source $MYVIMRC
+" endif
 
 "###############################################################################
 "# Plugs
@@ -17,16 +17,19 @@ endif
 " Set the runtime path to include Plug and initialize
 call plug#begin('~/.config/nvim/plugged')
 
+  " Easy way to wrap/unwrap words
+  Plug 'tpope/vim-surround'
+
   if exists('g:vscode')
     " Easymotion
-    Plug 'asvetliakov/vim-easymotion'
+    " Plug 'asvetliakov/vim-easymotion'
 
     " Highlight Yank
-    Plug 'machakann/vim-highlightedyank'
+    " Plug 'machakann/vim-highlightedyank'
   else
 
     " Make your Vim/Neovim as smart as VSCode.
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
     " Tmux integration
     " Plug 'christoomey/vim-tmux-navigator'
@@ -35,28 +38,25 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'morhetz/gruvbox'
 
     " TS Syntax
-    Plug 'HerringtonDarkholme/yats.vim'
+    " Plug 'HerringtonDarkholme/yats.vim'
 
     " Fzf
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
     " Emmet
-    Plug 'mattn/emmet-vim'
+    " Plug 'mattn/emmet-vim'
 
     " Editor config
-    Plug 'editorconfig/editorconfig-vim'
+    " Plug 'editorconfig/editorconfig-vim'
 
     " Solarized color scheme
-    Plug 'altercation/vim-colors-solarized'
-
-    " Easy way to wrap/unwrap words
-    Plug 'tpope/vim-surround'
+    " Plug 'altercation/vim-colors-solarized'
 
     " Fuzzy search
     Plug 'ctrlpvim/ctrlp.vim'
 
     " Indent guides
-    Plug 'nathanaelkane/vim-indent-guides'
+    " Plug 'nathanaelkane/vim-indent-guides'
 
     " Syntax highlight
     " Plug 'sheerun/vim-polyglot'
@@ -86,7 +86,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'tpope/vim-commentary'
 
     " Git wrapper
-    Plug 'tpope/vim-fugitive'
+    " Plug 'tpope/vim-fugitive'
 
     " Unix commands wrapper
     " Plug 'tpope/vim-eunuch'
@@ -95,7 +95,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Plug 'tpope/vim-unimpaired'
 
     " Easy string coercion
-    Plug 'tpope/vim-abolish'
+    " Plug 'tpope/vim-abolish'
 
     " Programming metrics
     " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
