@@ -41,7 +41,7 @@ brew_packages:
   - yarn
   - zsh
 
-# brew_casks_options: "appdir=/Applications"
+brew_casks_options: "appdir=/Applications"
 
 brew_casks:
   - 1password
