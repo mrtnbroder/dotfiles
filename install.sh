@@ -14,7 +14,11 @@ bootstrap_macos() {
   # reset `sudo` timeout
   sudo -v
   # xcode command line tools might be required for some things
-  xcode-select --install
+  if xcode-select -p >/dev/null 2>&1; then
+    echo "XCode CLI is installed"
+  else
+    xcode-select --install
+  fi
   # homebrew uses a different path for arm64 (apple silicon chips)
   case "$(uname -m)" in
   x86_64)
