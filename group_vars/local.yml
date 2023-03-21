@@ -1,0 +1,11 @@
+---
+computername: unperfekt
+hostname: unperfekt.local
+
+shell: /usr/local/bin/fish
+
+gem_packages:
+
+pip_packages:
+  - ansible-lint
+  # - docker

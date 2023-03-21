@@ -1,0 +1,33 @@
+---
+# Tell System Settings App to quit before we overwrite any values so it does
+# not overwrite our values.
+- name: Quit System Settings
+  ansible.builtin.command: osascript -e 'quit app "System Settings"'
+  changed_when: false
+
+- name: Set macOS default settings
+  loop: "{{ macos_defaults }}"
+  loop_control:
+    label: "{{ item.name }}"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state }}"
+  notify:
+    - Restart Finder
+    - Restart Dock
+
+# - name: System Preferences -> General -> Sharing -> Hostname -> ComputerName
+#   shell: scutil --set ComputerName {{ computername }}
+#   when: ansible_hostname != computername
+
+# - name: System Preferences -> General -> Sharing -> Hostname -> HostName
+#   shell: scutil --set HostName {{ computername }}
+#   become: yes
+#   when: ansible_hostname != computername
+
+# - name: System Preferences -> General -> Sharing -> Hostname -> LocalHostName
+#   shell: scutil --set LocalHostName {{ computername }}
+#   when: ansible_hostname != computername

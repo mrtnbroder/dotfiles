@@ -1,0 +1,34 @@
+---
+- name: Brew -> Install Taps
+  tags: bootstrap
+  community.general.homebrew_tap:
+    state: present
+    name: "{{ brew_taps }}"
+
+- name: Brew -> Install Casks
+  tags: bootstrap
+  community.general.homebrew_cask:
+    state: present
+    accept_external_apps: true
+    name: "{{ brew_casks }}"
+    install_options: "{{ brew_casks_options }}"
+
+- name: Brew -> Install Fonts
+  tags: bootstrap
+  community.general.homebrew_cask:
+    state: present
+    accept_external_apps: true
+    name: "{{ brew_fonts }}"
+
+- name: Brew -> Install Packages
+  tags: bootstrap
+  community.general.homebrew:
+    state: present
+    # accept_external_apps: true
+    name: "{{ brew_packages }}"
+
+- name: Brew -> Upgrade Packages
+  tags: brew
+  community.general.homebrew:
+    upgrade_all: true
+    update_homebrew: true
