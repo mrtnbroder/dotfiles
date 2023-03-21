@@ -12,7 +12,7 @@
       tags: macos
     - role: brew
       tags: brew
-    - role: mas
-      tags: mas
+    # - role: mas
+    #   tags: mas
     - role: npm
       tags: npm
