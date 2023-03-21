@@ -22,10 +22,10 @@ bootstrap_macos() {
   # homebrew uses a different path for arm64 (apple silicon chips)
   case "$(uname -m)" in
   x86_64)
-    export PATH="/opt/homebrew/bin:${PATH}"
+    export PATH="/usr/local/bin:${PATH}"
     ;;
   arm64)
-    export PATH="/usr/local/bin:${PATH}"
+    export PATH="/opt/homebrew/bin:${PATH}"
     sudo softwareupdate --install-rosetta
     ;;
   esac
