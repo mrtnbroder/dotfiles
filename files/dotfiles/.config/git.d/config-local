@@ -1,0 +1,9 @@
+# vim: ft=gitconfig
+
+[user]
+name = Martin Broder
+email =	mrtnbroder@gmail.com
+signingkey = 94949FE6D66C04A1C3EED91086A8C3EA4D53BB35
+
+[includeIf "gitdir:~/Documents/Work/Anyplace/"]
+path = ~/.config/git.d/config-anyplace

@@ -1,18 +1,17 @@
-- name: macOS system setup & dotfiles
+- name: macOS bootstrap
   hosts: local
-  # become: true
-  # tags: always
-  # become_user: martinbroder
   # pre_tasks:
   #   - name: Pre-Tasks Echo
-  #     ansible.builtin.debug:
+  #     debug:
   #       msg: "{{ example_server }}"
   roles:
     - role: macos
       tags: macos
     - role: brew
       tags: brew
-    # - role: mas
-    #   tags: mas
+    - role: mas
+      tags: mas
     - role: npm
       tags: npm
+    - role: symlink
+      tags: symlink

@@ -3,7 +3,7 @@
 # exit on error
 set -e
 
-ANSIBLE_REPO_PATH="$HOME/.dotfiles.$(date +%H%M%S)"
+ANSIBLE_REPO_PATH=$HOME/.dotfiles
 ANSIBLE_REPO_BRANCH=main
 ANSIBLE_REPO_PLAYBOOK=bootstrap
 ANSIBLE_REPO_URL=https://github.com/mrtnbroder/dotfiles-ansible.git
@@ -15,7 +15,7 @@ bootstrap_macos() {
   sudo -v
   # xcode command line tools might be required for some things
   if xcode-select -p >/dev/null 2>&1; then
-    echo "XCode CLI is installed"
+    echo "XCode CLI already installed, skipping."
   else
     xcode-select --install
   fi
@@ -45,5 +45,5 @@ pip3 install ansible ansible-lint
 
 # ANSIBLE_CONFIG=setup/setup.cfg ansible-playbook setup/site.yml --extra-vars "@setup/extra-vars.yml"
 
-ansible-playbook local.yml --ask-become-pass --tags=bootstrap
+ansible-playbook bootstrap.yml --ask-become-pass
 # ansible-playbook playbooks/dotfiles.yml

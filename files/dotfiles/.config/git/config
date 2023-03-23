@@ -1,0 +1,55 @@
+# vim: ft=gitconfig
+
+[gpg]
+program = /usr/local/bin/gpg
+
+[color]
+ui = auto
+interactive = auto
+
+[credential]
+helper = osxkeychain
+
+[hub]
+protocol = git
+
+[merge]
+ff = only
+
+[diff]
+tool = mvimdiff
+
+[commit]
+gpgsign = true
+#	template = ~/.config/git.d/template
+
+[push]
+default = current
+
+[tag]
+forceSignAnnotated = true
+
+[rebase]
+autosquash = true
+
+[core]
+commitGraph = true
+autocrlf = input
+editor = $EDITOR
+ignorecase = false
+
+[fetch]
+prune = true
+
+[mergetool]
+keepBackup = false
+
+[include]
+path = ~/.config/git.d/config-local
+
+[init]
+defaultBranch = main
+
+[user]
+name = Martin Broder
+email = mrtnbroder@gmail.com

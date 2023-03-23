@@ -1,4 +1,6 @@
 ---
+brew_casks_options: "appdir=/Applications"
+
 brew_taps:
   - homebrew/bundle
   - homebrew/cask
@@ -8,6 +10,7 @@ brew_taps:
 
 brew_packages:
   - ack
+  # - alfred # raycast is better
   - ansible
   - awscli
   - bash
@@ -23,7 +26,7 @@ brew_packages:
   - hub
   - imagemagick
   - jq
-  # - {name: make, install_options: "with-default-names" }
+  - make
   - mas
   - neovim
   - nodenv
@@ -41,13 +44,10 @@ brew_packages:
   - yarn
   - zsh
 
-brew_casks_options: "appdir=/Applications"
-
 brew_casks:
   - 1password
-  # - alfred # raycast is better
   - around
-  - bartender
+  # - bartender # not needed since macOS Ventura?
   - brave-browser
   - cleanmymac
   - dash

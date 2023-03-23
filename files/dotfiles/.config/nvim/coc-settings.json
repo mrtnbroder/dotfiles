@@ -1,0 +1,12 @@
+{
+	"suggest.completionItemKindLabels": {
+		"text": "t",
+		"method": "m",
+		"function": ""
+	},
+	"diagnostic.errorSign": "🚨",
+	"diagnostic.warningSign": "⚠️",
+	"diagnostic.infoSign": "ℹ️",
+	"diagnostic.hintSign": "👉",
+	"coc.source.emoji.filetypes": ["markdown"]
+}

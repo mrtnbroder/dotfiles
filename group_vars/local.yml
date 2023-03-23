@@ -1,6 +1,6 @@
 ---
-computername: unperfekt
-hostname: unperfekt.local
+computername: mbroder
+hostname: mbroder.local
 
 shell: /usr/local/bin/fish
 

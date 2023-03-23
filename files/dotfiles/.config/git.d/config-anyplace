@@ -1,0 +1,11 @@
+# vim: ft=gitconfig
+
+[user]
+email =	martin@anyplace.com
+signingkey =
+
+[commit]
+gpgsign = false
+
+[tag]
+forceSignAnnotated = false

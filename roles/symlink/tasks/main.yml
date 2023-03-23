@@ -1,0 +1,8 @@
+---
+- name: Symlink -> Symlink dotfiles
+  tags: bootstrap,symlink
+  ansible.builtin.shell:
+    chdir: "{{ playbook_dir }}/files/dotfiles"
+    cmd: "stow . --no-folding --restow --verbose=2 --ignore='.DS_Store' --target={{ ansible_env.HOME }}"
+  register: result
+  changed_when: "result.stderr is search('LINK: ')"

@@ -1,5 +1,4 @@
 ---
-
 macos_defaults:
   - name: System Preferences -> Appearance -> Appearance
     domain: NSGlobalDomain
