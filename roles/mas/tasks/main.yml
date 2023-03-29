@@ -1,7 +1,0 @@
----
-- name: Mas -> Install App Store Apps
-  tags: bootstrap,mas
-  loop: "{{ mas_packages }}"
-  community.general.mas:
-    state: present
-    name: "{{ item.name }}"

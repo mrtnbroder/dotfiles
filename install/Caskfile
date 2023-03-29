@@ -1,0 +1,38 @@
+cask_args appdir: "/Applications"
+
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+
+# cask "1password"
+cask "https://raw.githubusercontent.com/Homebrew/homebrew-cask/497af96a959a73b91a1924eb5de96dfbef0a80cb/Casks/1password.rb"
+cask "around"
+# cask "bartender"
+cask "brave-browser"
+cask "cleanmymac"
+cask "dash"
+cask "docker"
+cask "dropbox"
+cask "fantastical"
+cask "firefox"
+cask "framer"
+cask "google-chrome"
+cask "imageoptim"
+cask "kitty"
+cask "little-snitch"
+cask "notion"
+cask "raycast"
+cask "rectangle"
+cask "sf-symbols"
+cask "slack"
+cask "telegram"
+cask "the-unarchiver"
+cask "tower"
+# cask "transmit"
+cask "visual-studio-code"
+
+# fonts
+cask "font-jetbrains-mono-nerd-font"
+cask "font-input"
+# cask font-ubuntu-mono-nerd-font
+# cask font-fira-mono-nerd-font

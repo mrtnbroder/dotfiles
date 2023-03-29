@@ -1,0 +1,55 @@
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+# Core
+brew "coreutils"
+brew "gnupg"
+brew "gpg2"
+brew "neovim"
+brew "openssl"
+
+# Filesystem / Network
+brew "ack"
+brew "curl"
+brew "rsync"
+brew "tree"
+brew "wget"
+
+# Tools
+# brew "ansible"
+brew "awscli"
+brew "editorconfig"
+brew "jq"
+brew "make"
+brew "stow"
+brew "tmux"
+brew "vifm"
+
+# Shells
+brew "bash"
+brew "fish"
+brew "zsh"
+
+# Language Tools
+brew "fnm"
+brew "pyenv"
+brew "rbenv"
+
+# Package Managers
+brew "mas"
+brew "yarn"
+
+# Version Control
+brew "gh"
+brew "git-flow"
+brew "git"
+# brew "hub"
+
+# Databases
+brew "redis"
+
+# Media
+brew "imagemagick"
+
+# Misc
+brew "starship"

@@ -1,5 +1,0 @@
----
-mas_packages:
-  # - { name: Jira, id: 1475897096 }
-  # - { name: XCode, id: 497799835 }
-  - { name: Things 3, id: 904280696 }

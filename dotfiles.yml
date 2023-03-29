@@ -1,5 +1,0 @@
-- name: macOS dotfiles
-  hosts: local
-  roles:
-    - role: symlink
-      tags: symlink

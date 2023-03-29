@@ -1,7 +1,0 @@
----
-- name: NPM -> Install Packages
-  tags: bootstrap,npm
-  community.general.npm:
-    global: true
-    name: "{{ npm_packages }}"
-    state: present
