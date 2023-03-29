@@ -38,14 +38,11 @@ link: stow
 	$(STOW_BIN) --no-folding --restow --ignore=".DS_Store" -t $(XDG_CONFIG_HOME) config
 
 unlink: stow
-	@echo "Unstow!!!"
 	$(STOW_BIN) --delete -t $(HOME) runcom
 	$(STOW_BIN) --delete -t $(XDG_CONFIG_HOME) config
-	# for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE.bak ]; then \
-		# mv -v $(HOME)/$$FILE.bak $(HOME)/$${FILE%%.bak}; fi; done
 
 brew:
-	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
+	is-executable brew || NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 fish: brew
 ifdef GITHUB_ACTION

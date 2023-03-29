@@ -7,6 +7,8 @@ set -l fish_home "$XDG_CONFIG_HOME/fish"
 # fish_add_path "/usr/local/sbin"
 # fish_add_path "$HOME/.local/bin"
 
+fish_add_path "$fish_home/bin"
+
 source $fish_home/abbrs.fish
 source $fish_home/aliases.fish
 
