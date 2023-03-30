@@ -13,7 +13,11 @@ export XDG_CONFIG_HOME = $(HOME)/.config
 export STOW_DIR = $(DOTFILES_DIR)
 export ACCEPT_EULA=Y
 
-.PHONY: test
+define fnm_setup
+	eval "$$($(FNM_BIN) env)"
+endef
+
+.PHONY: all macos core-macos packages stow sudo link unlink brew fish git npm brew-packages brew-casks node-packages test
 
 all: macos
 
@@ -21,10 +25,10 @@ macos: core-macos packages link
 
 core-macos: brew fish git npm
 
-packages: brew-packages node-packages
+packages: brew-packages brew-casks node-packages
 
 stow: brew
-	is-executable stow || brew install stow
+	is-executable $(STOW_BIN) || brew install stow
 
 sudo:
 ifndef GITHUB_ACTION
@@ -42,19 +46,19 @@ unlink: stow
 	$(STOW_BIN) --delete -t $(XDG_CONFIG_HOME) config
 
 brew:
-	is-executable brew || NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+	is-executable $(BREW_BIN) || NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 fish: brew
 ifdef GITHUB_ACTION
 	if ! grep -q $(FISH_BIN) $(SHELLS); then \
-		$(BREW_BIN) install fish && \
-		sudo append $(FISH_BIN) $(SHELLS) && \
+		$(BREW_BIN) install fish; \
+		sudo append $(FISH_BIN) $(SHELLS); \
 		sudo chsh -s $(FISH_BIN); \
 	fi
 else
 	if ! grep -q $(FISH_BIN) $(SHELLS); then \
-		$(BREW_BIN) install fish && \
-		sudo append $(FISH_BIN) $(SHELLS) && \
+		$(BREW_BIN) install fish; \
+		sudo append $(FISH_BIN) $(SHELLS); \
 		chsh -s $(FISH_BIN); \
 	fi
 endif
@@ -72,7 +76,7 @@ brew-casks: brew
 	$(BREW_BIN) bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 
 node-packages: npm
-	eval $$(fnm env); npm install -g $(shell grep -v '^#' install/npmfile | awk '{print $1}' | tr '\n' ' ')
+	$(fnm_setup); npm install -g $(shell grep -v '^#' install/npmfile | awk '{print $1}' | tr '\n' ' ')
 
 test:
-	eval $$(fnm env); bats test
+	$(fnm_setup); bats test

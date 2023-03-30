@@ -1,7 +1,7 @@
 # General
 set -gx EDITOR nvim
 set -gx VISUAL code
-set -gx VISUAL_GIT stree
+set -gx VISUAL_GIT gittower
 set -gx PAGER less
 
 # XDG Base Directory Specification (https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)

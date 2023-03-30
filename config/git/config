@@ -1,7 +1,7 @@
 # vim: ft=gitconfig
 
 [gpg]
-program = /usr/local/bin/gpg
+program = /opt/homebrew/bin/gpg
 
 [color]
 ui = auto
@@ -20,7 +20,7 @@ ff = only
 tool = mvimdiff
 
 [commit]
-gpgsign = true
+# gpgsign = true
 #	template = ~/.config/git.d/template
 
 [push]
@@ -44,12 +44,14 @@ prune = true
 [mergetool]
 keepBackup = false
 
-[include]
-path = ~/.config/git.d/config-local
-
 [init]
 defaultBranch = main
 
-[user]
-name = Martin Broder
-email = mrtnbroder@gmail.com
+[include]
+path = ~/.config/git.d/config-local
+
+[includeIf "gitdir:~/Developer/Anyplace/"]
+path = ~/.config/git.d/config-anyplace
+
+[includeIf "gitdir:~/Developer/BDR/"]
+path = ~/.config/git.d/config-bdr

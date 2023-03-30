@@ -2,8 +2,8 @@
 
 [user]
 name = Martin Broder
-email =	mrtnbroder@gmail.com
-signingkey = 4D53BB35
+email =	martin.broder.extern@bdr.de
+signingkey = FD1FDB00
 
 [commit]
 gpgsign = true

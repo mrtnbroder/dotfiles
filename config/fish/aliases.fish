@@ -1,3 +1,1 @@
-alias code="code ."
-alias tower="gittower ."
-alias gittower="gittower ."
+alias tower="gittower"

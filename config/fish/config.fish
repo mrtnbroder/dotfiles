@@ -1,17 +1,47 @@
 # Disable greeting
 set -U fish_greeting
+
 # Set fish home
-set -l fish_home "$XDG_CONFIG_HOME/fish"
+set -l fish_home "$HOME/.config/fish"
 
-# Brew puts some binaries into this path
-# fish_add_path "/usr/local/sbin"
-# fish_add_path "$HOME/.local/bin"
-
+# Brew
+fish_add_path "/usr/local/bin"
+fish_add_path "/opt/homebrew/bin"
 fish_add_path "$fish_home/bin"
 
-source $fish_home/abbrs.fish
-source $fish_home/aliases.fish
+. $fish_home/env.fish
+. $fish_home/abbrs.fish
+. $fish_home/aliases.fish
+
+if not type -q fisher
+  curl https://git.io/fisher --create-dirs -sLo "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
+  fish -c "fisher update"
+end
+
+# fnm
+if type -q fnm
+    fnm env --use-on-cd | .
+end
+
+# kitty
+if type -q kitty
+  kitty + complete setup fish | .
+end
+
+# pyenv
+if type -q pyenv
+  set -Ux PYENV_ROOT "$HOME/.pyenv"
+  fish_add_path "$PYENV_ROOT/bin"
+  status --is-interactive; and . (pyenv init -| psub)
+end
+
+# rbenv
+if type -q rbenv
+  status --is-interactive; and . (rbenv init -| psub)
+  # echo "init rbenv"
+end
+
 
 fish_vi_key_bindings
 
-starship init fish | source
+starship init fish | .

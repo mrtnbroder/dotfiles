@@ -4,6 +4,9 @@ set BIN_NAME (basename (status filename))
 set COMMAND_NAME $argv[1]
 set SUB_COMMAND_NAME $argv[2]
 
+# Dotfiles location (assuming ~/.dotfiles)
+set DOTFILES_DIR "$HOME/.dotfiles"
+
 function dot_help
   echo "Usage: $BIN_NAME <command>"
   echo
@@ -25,8 +28,8 @@ function dot_clean
 end
 
 function dot_edit
-  sh -c "$VISUAL $DOTFILES_DIR"
-  sh -c "$VISUAL_GIT $DOTFILES_DIR"
+  fish -c "$VISUAL $DOTFILES_DIR"
+  fish -c "$VISUAL_GIT $DOTFILES_DIR"
 end
 
 function dot_update
@@ -52,8 +55,8 @@ switch $COMMAND_NAME
   case "" "-h" "--help" "help"
     dot_help
   case "*"
-    if type -q "sub_$COMMAND_NAME"
-      eval "sub_$COMMAND_NAME"
+    if type -q "dot_$COMMAND_NAME"
+      eval "dot_$COMMAND_NAME"
     else
       echo "'$COMMAND_NAME' is not a known command or has errors."
       dot_help
