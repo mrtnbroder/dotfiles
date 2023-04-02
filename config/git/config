@@ -1,5 +1,10 @@
 # vim: ft=gitconfig
 
+[user]
+name = Martin Broder
+email =	mrtnbroder@gmail.com
+signingkey = 4D53BB35
+
 [gpg]
 program = /opt/homebrew/bin/gpg
 
@@ -20,11 +25,14 @@ ff = only
 tool = mvimdiff
 
 [commit]
-# gpgsign = true
+gpgsign = true
 #	template = ~/.config/git.d/template
 
 [push]
 default = current
+
+[pull]
+ff = only
 
 [tag]
 forceSignAnnotated = true
@@ -46,9 +54,6 @@ keepBackup = false
 
 [init]
 defaultBranch = main
-
-[include]
-path = ~/.config/git.d/config-local
 
 [includeIf "gitdir:~/Developer/Anyplace/"]
 path = ~/.config/git.d/config-anyplace

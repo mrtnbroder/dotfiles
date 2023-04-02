@@ -1,9 +1,0 @@
-# vim: ft=gitconfig
-
-[user]
-name = Martin Broder
-email =	mrtnbroder@gmail.com
-signingkey = 4D53BB35
-
-[commit]
-gpgsign = true

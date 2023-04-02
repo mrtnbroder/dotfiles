@@ -7,6 +7,7 @@ brew "gnupg"
 brew "gpg2"
 brew "neovim"
 brew "openssl"
+brew "openssh"
 
 # Filesystem / Network
 brew "ack"
