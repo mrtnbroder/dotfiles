@@ -45,6 +45,13 @@ if type -q rbenv
     # echo "init rbenv"
 end
 
+# jenv
+if type -q jenv
+    # fish_add_path $HOME/.jenv/bin
+    status --is-interactive; and . (jenv init -| psub)
+    # echo "init rbenv"
+end
+
 
 fish_vi_key_bindings
 
