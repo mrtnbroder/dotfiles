@@ -1,5 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
+tap "oven-sh/bun"
 
 # Core
 brew "coreutils"
@@ -39,6 +40,9 @@ brew "rbenv"
 # Package Managers
 brew "mas"
 brew "yarn"
+
+# All-in-one toolkit for JavaScript and TypeScript
+brew "bun"
 
 # Version Control
 brew "gh"

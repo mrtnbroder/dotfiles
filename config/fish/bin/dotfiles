@@ -41,8 +41,8 @@ end
 function dot_update
     echo '$ brew upgrade'
     brew upgrade
-    echo '$ brew cask upgrade'
-    brew cask upgrade
+    echo '$ brew upgrade --cask'
+    brew upgrade --cask
     echo '$ pip3 install --upgrade pip'
     pip3 install --upgrade pip
     echo '$ npm install -g npm'

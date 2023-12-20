@@ -25,3 +25,7 @@ set -gx LC_ALL en_US.UTF-8
 
 # Keep showing man page after exit
 set -gx MANPAGER less -X
+
+# Rust Directories
+set -gx RUSTUP_HOME "$XDG_CONFIG_HOME/rustup"
+set -gx CARGO_HOME "$XDG_CONFIG_HOME/cargo"

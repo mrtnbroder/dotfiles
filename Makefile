@@ -75,6 +75,9 @@ brew-packages: brew
 brew-casks: brew
 	$(BREW_BIN) bundle --file=$(DOTFILES_DIR)/install/Caskfile || true
 
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 node-packages: npm
 	$(fnm_setup); npm install -g $(shell grep -v '^#' install/npmfile | awk '{print $1}' | tr '\n' ' ')
 

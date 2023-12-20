@@ -5,15 +5,22 @@
 function! s:split(...) abort
     let direction = a:1
     let file = a:2
-    call VSCodeCall(direction == 'h' ? 'workbench.action.splitEditorDown' : 'workbench.action.splitEditorRight')
-    if file != ''
+    let cmd = direction == 'h' ? 'workbench.action.splitEditorDown' : 'workbench.action.splitEditorRight'
+    let result = VSCodeCall(cmd)
+    if result == 0 && file != ''
         call VSCodeExtensionNotify('open-file', expand(file), 'all')
     endif
 endfunction
 
 function! s:splitNew(...)
     let file = a:2
-    call s:split(a:1, file == '' ? '__vscode_new__' : file)
+    let filename = file == '' ? '__vscode_new__' : file
+    let buf = bufnr(filename)
+    if buf == -1
+        call s:split(a:1, filename)
+    else
+        call s:split(a:1, buf, filename)
+    endif
 endfunction
 
 function! s:closeOtherEditors()

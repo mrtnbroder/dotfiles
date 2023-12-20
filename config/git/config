@@ -2,11 +2,12 @@
 
 [user]
 name = Martin Broder
-email =	mrtnbroder@gmail.com
-signingkey = 4D53BB35
+email = mrtnbroder@gmail.com
+signingkey = 7EE42F37
 
 [gpg]
 program = /opt/homebrew/bin/gpg
+format = openpgp
 
 [color]
 ui = auto

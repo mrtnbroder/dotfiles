@@ -2,19 +2,23 @@
 set -U fish_greeting
 
 # Set fish home
-set -l fish_home "$HOME/.config/fish"
-
-# Fish
-fish_add_path "$fish_home/bin"
-# Brew
-fish_add_path /usr/local/bin /opt/homebrew/bin /opt/homebrew/sbin
-# GNU coreutils
-# fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
+set -gx FISH_HOME "$HOME/.config/fish"
 
 # Source files
-. $fish_home/env.fish
-. $fish_home/abbrs.fish
-. $fish_home/aliases.fish
+. $FISH_HOME/env.fish
+. $FISH_HOME/abbrs.fish
+. $FISH_HOME/aliases.fish
+
+# Fish
+fish_add_path $FISH_HOME/bin
+# Brew
+fish_add_path /usr/local/bin /opt/homebrew/bin /opt/homebrew/sbin
+# .local
+fish_add_path $HOME/.local/bin
+# GNU coreutils
+# fish_add_path /opt/homebrew/opt/coreutils/libexec/gnubin
+# Rust
+fish_add_path $CARGO_HOME/bin
 
 # Load fisher
 if not type -q fisher

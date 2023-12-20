@@ -3,16 +3,19 @@
 "###############################################################################
 
 " auto-install vim-plug
-" if empty(glob('~/.config/nvim/autoload/plug.vim'))
-"   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall
-"   " autocmd VimEnter * PlugInstall | source $MYVIMRC
-" endif
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 "###############################################################################
 "# Plugs
 "###############################################################################
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 " Set the runtime path to include Plug and initialize
 call plug#begin('~/.config/nvim/plugged')
@@ -124,9 +127,3 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Close Plug
 call plug#end()
-
-" Automatically install missing plugins on startup
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
