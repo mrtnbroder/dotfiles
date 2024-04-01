@@ -29,3 +29,6 @@ set -gx MANPAGER less -X
 # Rust Directories
 set -gx RUSTUP_HOME "$XDG_CONFIG_HOME/rustup"
 set -gx CARGO_HOME "$XDG_CONFIG_HOME/cargo"
+
+# Source local env overrides if present
+test -e $FISH_HOME/env.local.fish; and . $FISH_HOME/env.local.fish

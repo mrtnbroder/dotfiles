@@ -1,15 +1,39 @@
-# Top-level .editorconfig file
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
 root = true
 
+# All files
 [*]
-charset = utf-8
-end_of_line = lf
-indent_size = 2
 indent_style = space
-insert_final_newline = true
-max_line_length = 80
+indent_size = 2
+end_of_line = lf
+charset = utf-8
 trim_trailing_whitespace = true
+insert_final_newline = true
 
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# JSON files
+[*.json]
+indent_size = 2
+
+# JavaScript files
+[*.js]
+indent_size = 2
+
+# Shell scripts
+[*.sh]
+end_of_line = lf
+
+# Windows scripts
+[*.{cmd,bat}]
+end_of_line = crlf
+
+# Makefiles
 [{Makefile,**.mk}]
 # Use tabs for indentation (Makefiles require tabs)
 indent_style = tab

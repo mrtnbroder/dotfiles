@@ -1,0 +1,21 @@
+simplified_ui true
+
+default_layout "compact"
+
+theme "tokyo-night-moon"
+
+themes {
+    tokyo-night-moon {
+        fg "#c8d3f5"
+        bg "#222436"
+        black "#1b1d2b"
+        red "#ff757f"
+        green "#c3e88d"
+        yellow "#ffc777"
+        blue "#82aaff"
+        magenta "#c099ff"
+        cyan "#86e1fc"
+        white "#828bb8"
+        orange "#ff966c"
+    }
+}

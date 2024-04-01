@@ -9,6 +9,9 @@ signingkey = 7EE42F37
 program = /opt/homebrew/bin/gpg
 format = openpgp
 
+[column]
+ui = auto
+
 [color]
 ui = auto
 interactive = auto
@@ -23,20 +26,30 @@ protocol = git
 ff = only
 
 [diff]
-tool = mvimdiff
+tool = vimdiff
+algorithm = histogram
 
 [commit]
 gpgsign = true
+verbose = true
 #	template = ~/.config/git.d/template
 
+[branch]
+# autosetuprebase = always
+# autosetupmerge = always
+sort = -committerdate
+
 [push]
-default = current
+autoSetupRemote = true
+default = upstream
 
 [pull]
+rebase = true
 ff = only
 
 [tag]
 forceSignAnnotated = true
+sort = -version:refname
 
 [rebase]
 autosquash = true
@@ -46,6 +59,8 @@ commitGraph = true
 autocrlf = input
 editor = $EDITOR
 ignorecase = false
+symlinks = true
+compression = 9
 
 [fetch]
 prune = true
@@ -56,8 +71,9 @@ keepBackup = false
 [init]
 defaultBranch = main
 
-[includeIf "gitdir:~/Developer/Anyplace/"]
-path = ~/.config/git.d/config-anyplace
+[maintenance]
+auto = true
+strategy = incremental
 
 [includeIf "gitdir:~/Developer/BDR/"]
 path = ~/.config/git.d/config-bdr

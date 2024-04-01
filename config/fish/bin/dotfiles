@@ -29,7 +29,7 @@ end
 
 function dot_edit
     $VISUAL $DOTFILES_DIR
-    $VISUAL_GIT $DOTFILES_DIR
+    # $VISUAL_GIT $DOTFILES_DIR
 end
 
 function dot_macos

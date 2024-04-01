@@ -1,31 +1,42 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "oven-sh/bun"
+tap "jesseduffield/lazygit"
 
 # Core
+# brew "clang-format"
 brew "coreutils"
 brew "gnupg"
-brew "gpg2"
+brew "gnu-sed"
+# brew "gpg2"  # Replaced by gnupg
 brew "neovim"
-brew "openssl"
-brew "openssh"
+brew "openssl@3"
+# brew "openssh"
 
 # Filesystem / Network
 brew "ack"
 brew "curl"
 brew "rsync"
+brew "sshuttle"
 brew "tree"
 brew "wget"
+brew "zoxide"
 
 # Tools
-# brew "ansible"
+brew "ansible"
+brew "atmos"
 brew "awscli"
 brew "editorconfig"
+brew "helm"
 brew "jq"
 brew "make"
+# brew "maven"
+brew "pipx"
 brew "stow"
+brew "terraform"
 brew "tmux"
 brew "vifm"
+brew "supabase/tap/supabase"
 
 # Shells
 brew "bash"
@@ -34,12 +45,15 @@ brew "zsh"
 
 # Language Tools
 brew "fnm"
+brew "jenv"
 brew "pyenv"
 brew "rbenv"
+brew "zig"
 
 # Package Managers
 brew "mas"
-brew "yarn"
+brew "uv" # An extremely fast Python package and project manager, written in Rust.
+# brew "yarn"
 
 # All-in-one toolkit for JavaScript and TypeScript
 brew "bun"
@@ -48,7 +62,10 @@ brew "bun"
 brew "gh"
 brew "git-flow"
 brew "git"
-# brew "hub"
+brew "glab"
+brew "hub"
+brew "lazygit"
+brew "stgit"
 
 # Databases
 brew "redis"
@@ -56,5 +73,17 @@ brew "redis"
 # Media
 brew "imagemagick"
 
+# Container Tools
+# brew "colima"
+brew "docker-compose"
+# brew "lima"
+
+# Development Tools
+brew "gemini-cli"
+# brew "moon"
+# brew "node"
+
 # Misc
 brew "starship"
+brew "fzf"
+brew "zellij"

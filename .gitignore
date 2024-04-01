@@ -5,3 +5,5 @@ system/.custom
 system/.exports
 
 *bdr
+
+env.local.fish
