@@ -1,8 +1,5 @@
 cask_args appdir: "/Applications", fontdir: "/Library/Fonts"
 
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
-
 # cask "010-editor"
 # cask "1password"
 cask "adobe-creative-cloud"
