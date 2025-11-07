@@ -70,6 +70,6 @@ cask "font-share-tech"
 cask "font-maple-mono"
 cask "font-share-tech-mono"
 cask "font-source-code-pro"
-cask "font-source-sans-pro"
+# cask "font-source-sans-pro"
 # cask "font-ubuntu-mono-nerd-font"
 
