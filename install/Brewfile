@@ -1,5 +1,6 @@
 tap "oven-sh/bun"
 tap "jesseduffield/lazygit"
+tap "supabase/tap"
 
 # Core
 # brew "clang-format"
