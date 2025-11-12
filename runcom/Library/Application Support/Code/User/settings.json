@@ -303,6 +303,12 @@
   // *-- Extensions / Emmet
   "emmet.includeLanguages": {
     "postcss": "css"
-  }
+  },
   // --* Extensions / Emmet
+
+  // *-- Extensions / MarkdownLint
+  "markdownlint.config": {
+    "no-bare-urls": false
+  }
+  // --* Extensions / MarkdownLint
 }

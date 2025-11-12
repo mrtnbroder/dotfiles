@@ -36,6 +36,7 @@ brew "terraform"
 brew "tmux"
 brew "vifm"
 brew "supabase/tap/supabase"
+brew "zellij"
 
 # Shells
 brew "bash"
@@ -85,4 +86,3 @@ brew "gemini-cli"
 # Misc
 brew "starship"
 brew "fzf"
-brew "zellij"
