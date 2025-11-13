@@ -5,14 +5,17 @@ show_startup_tips false
 copy_on_select true
 default_layout "compact"
 theme "tokyo-night-dark"
+welcome_screen false
+copy_command "pbcopy"
 
-compact-bar location="zellij:compact-bar" {
-  tooltip "F1"
+plugins {
+  compact-bar location="zellij:compact-bar" {
+    tooltip "F1"
+  }
 }
 
 ui {
   pane_frames {
-    rounded_corners false
     hide_session_name true
   }
 }
