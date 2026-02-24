@@ -1,13 +1,12 @@
 # vim: ft=gitconfig
 
 [user]
-name = Martin Broder
-email = mrtnbroder@gmail.com
-signingkey = 7EE42F37
+email = "mrtnbroder@gmail.com"
+name = "Martin Broder"
+signingKey = "~/.ssh/id_ed25519_github.pub"
 
 [gpg]
-program = /opt/homebrew/bin/gpg
-format = openpgp
+format = "ssh"
 
 [column]
 ui = auto
@@ -51,7 +50,11 @@ ff = only
 forceSignAnnotated = true
 sort = -version:refname
 
+[rerere]
+enabled = true
+
 [rebase]
+updateRefs = true
 autosquash = true
 
 [core]
@@ -61,6 +64,7 @@ editor = $EDITOR
 ignorecase = false
 symlinks = true
 compression = 9
+editor = "nvim"
 
 [fetch]
 prune = true

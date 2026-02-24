@@ -16,29 +16,29 @@
   "diffEditor.renderSideBySide": false,
   "editor.bracketPairColorization.enabled": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit" // enable ESLint fixes on save
+    "source.fixAll.eslint": "explicit", // enable ESLint fixes on save
   },
   "editor.codeLens": false,
   "editor.colorDecorators": false,
   "editor.cursorStyle": "line-thin",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[fish]": {
-    "editor.defaultFormatter": "bmalehorn.vscode-fish"
+    "editor.defaultFormatter": "bmalehorn.vscode-fish",
   },
   "[scss]": {
-    "editor.defaultFormatter": "vscode.css-language-features"
+    "editor.defaultFormatter": "vscode.css-language-features",
   },
   "[xml]": {
-    "editor.defaultFormatter": "redhat.vscode-xml"
+    "editor.defaultFormatter": "redhat.vscode-xml",
   },
   "editor.quickSuggestions": {
-    "strings": "on"
+    "strings": "on",
   },
   "editor.folding": false,
   "editor.fontFamily": "MonoLisa",
@@ -88,15 +88,27 @@
     "**/build/**": true,
     "**/coverage/**": true,
     "**/dist/**": true,
-    "**/node_modules/**": true
+    "**/node_modules/**": true,
   },
   "files.exclude": {
-    "**/.next": true
+    "**/.next": true,
   },
   "files.associations": {
-    "*.css": "tailwindcss"
+    "*.css": "tailwindcss",
   },
   // --* Files
+
+  // *-- JSON
+  "json.schemaDownload.trustedDomains": {
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://opencode.ai/": true,
+    "https://models.dev": true,
+  },
+  // --* JSON
 
   // *-- Github Copilot
   "github.copilot.enable": {
@@ -110,7 +122,7 @@
     "javascriptreact": true,
     "typescript": true,
     "typescriptreact": true,
-    "fish": true
+    "fish": true,
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   // --* Github Copilot
@@ -120,8 +132,8 @@
   "chat.tools.terminal.terminalProfile.osx": {
     "path": "fish", // bash instead of zsh
     "env": {
-      "COPILOT": "1" // environment variable that can be used in init scripts
-    }
+      "COPILOT": "1", // environment variable that can be used in init scripts
+    },
   },
   // --* Copilot Chat
 
@@ -162,7 +174,7 @@
   "workbench.tree.renderIndentGuides": "always",
   "workbench.editor.enablePreview": true,
   "workbench.editorAssociations": {
-    "*.svg": "default"
+    "*.svg": "default",
   },
   // "workbench.editor.empty.hint": "hidden",
   // --* Workbench / UI
@@ -174,7 +186,7 @@
 
   // *-- Extensions
   "extensions.experimental.affinity": {
-    "vscodevim.vim": 1 // To improve VIM performance
+    "vscodevim.vim": 1, // To improve VIM performance
   },
   // --* Extensions
 
@@ -186,7 +198,7 @@
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["<space>"],
-      "commands": ["vspacecode.space"]
+      "commands": ["vspacecode.space"],
     },
     {
       "before": [","],
@@ -194,10 +206,10 @@
         "vspacecode.space",
         {
           "args": "m",
-          "command": "whichkey.triggerKey"
-        }
-      ]
-    }
+          "command": "whichkey.triggerKey",
+        },
+      ],
+    },
   ],
   "vim.smartRelativeLine": true,
   "vim.useCtrlKeys": true,
@@ -205,7 +217,7 @@
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": ["<space>"],
-      "commands": ["vspacecode.space"]
+      "commands": ["vspacecode.space"],
     },
     {
       "before": [","],
@@ -213,18 +225,18 @@
         "vspacecode.space",
         {
           "args": "m",
-          "command": "whichkey.triggerKey"
-        }
-      ]
+          "command": "whichkey.triggerKey",
+        },
+      ],
     },
     {
       "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "commands": ["editor.action.indentLines"],
     },
     {
       "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
-    }
+      "commands": ["editor.action.outdentLines"],
+    },
   ],
   // --* Extensions / VIM
 
@@ -257,7 +269,7 @@
     "markdown",
     "json",
     "jsonc",
-    "svelte"
+    "svelte",
   ],
   // --* Extensions / ESLint
 
@@ -302,13 +314,13 @@
 
   // *-- Extensions / Emmet
   "emmet.includeLanguages": {
-    "postcss": "css"
+    "postcss": "css",
   },
   // --* Extensions / Emmet
 
   // *-- Extensions / MarkdownLint
   "markdownlint.config": {
-    "no-bare-urls": false
-  }
+    "no-bare-urls": false,
+  },
   // --* Extensions / MarkdownLint
 }

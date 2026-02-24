@@ -19,3 +19,14 @@ ui {
     hide_session_name true
   }
 }
+
+keybinds {
+  unbind "Alt f"
+
+  shared_except "locked" {
+    bind "Alt [" { GoToPreviousTab; }
+    bind "Alt ]" { GoToNextTab; }
+    bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
+    bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
+  }
+}

@@ -1,7 +1,7 @@
 # General
-set -gx EDITOR nvim
+set -gx EDITOR code --wait
 set -gx VISUAL code
-set -gx VISUAL_GIT gittower
+set -gx VISUAL_GIT lazygit
 set -gx PAGER less
 
 # XDG Base Directory Specification (https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)
@@ -13,7 +13,7 @@ set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx GPG_TTY (tty)
 
 # Browser
-set -gx BROWSER brave-browser
+set -gx BROWSER "/Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser"
 
 # Enable colors
 set -gx CLICOLOR 1
