@@ -281,7 +281,7 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifierEnding": "minimal",
   "typescript.preferences.importModuleSpecifier": "project-relative",
-  "typescript.experimental.useTsgo": false,
+  "typescript.experimental.useTsgo": true,
   // --* Extensions / TypeScript
 
   // *-- Extensions / Stylelint
